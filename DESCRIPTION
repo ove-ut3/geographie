@@ -1,0 +1,20 @@
+Package: geographie
+Title: Fonctions autour du referentiel geographique
+Version: 0.1
+Authors@R: person("SIES", "Departement des outils d'aide a la decision", email = "ce.siesc3@education.gouv.fr", role = c("aut", "cre"))
+Description: Fonctions autour du referentiel geographique : extraction d'adresse, geocodage, conversions entre niveaux geographiques et libelles. Les donnees sont generees a partir de la fonction "package_geographie()" du projet "Géographie".
+Depends:
+    R (>= 3.2.5)
+License: Etalab
+Encoding: UTF-8
+LazyData: true
+Imports:
+	purrr,
+	dplyr,
+	tidyr,
+	importr,
+  stringr,
+  caractr,
+  divr,
+  jsonlite
+RoxygenNote: 5.0.1
