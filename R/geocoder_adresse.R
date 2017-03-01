@@ -56,7 +56,6 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
     stop("Le service doit être \"adresse.data.gouv.fr\" ou \"googlemaps\"", call. = FALSE)
   }
 
-  #adresse <- geocodage_google$adresse
   geocoder_init <- dplyr::data_frame(adresse)
 
   message("Géocodage \"", service, "\" : ", nrow(geocoder_init), " adresses soumises")
@@ -77,7 +76,6 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
     base_geocodage <- charger_rdata(paste0(racine_packages, "geographie/data/data_geocodage_data_gouv.RData"), "data_geocodage_data_gouv")
   } else if (service == "googlemaps") base_geocodage <- charger_rdata(paste0(racine_packages, "geographie/data/data_geocodage_google.RData"), "data_geocodage_google")
 
-  #base_geocodage <- dplyr::filter(base_geocodage, divr::mois_ecoules(date_ajout, Sys.Date()) <= 12)
   geocoder_ajout <- dplyr::anti_join(geocoder_init, base_geocodage, by = c("adresse_nettoyee" = "adresse"))
 
   if (nrow(geocoder_ajout) == 0) {

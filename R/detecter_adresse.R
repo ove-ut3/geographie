@@ -83,7 +83,7 @@ extraire_bp_cs <- function(adresse) {
     stop("Le premier paramètre doit être de type character", call. = FALSE)
   }
 
-  extraction_bp_cs <- lapply(adresse, stringr::str_locate, stringr::regex("((b\\.?p\\.?|c\\.?s\\.?|tsa)\\s*\\d+.*)", ignore_case = T)) %>%
+  extraction_bp_cs <- lapply(adresse, stringr::str_locate, stringr::regex("((b\\.?p\\.?|c\\.?s\\.?|tsa)\\s*\\d+.*)", ignore_case = TRUE)) %>%
     purrr::map_int(1) %>%
     dplyr::data_frame(adresse, position_debut = .) %>%
     dplyr::mutate(
