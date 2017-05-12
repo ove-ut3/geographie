@@ -25,4 +25,3 @@ Découper une adresse complète en ligne.
 geographie::decouper_adresse_lignes(c("MENESR 1 Rue descartes", "1 Rue descartes BP 1"))
 
 }
-

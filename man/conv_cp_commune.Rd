@@ -24,4 +24,3 @@ Obtenir le code commune à partir d'un code postal.
 geographie::conv_cp_commune(c("01001", "01000"))
 
 }
-

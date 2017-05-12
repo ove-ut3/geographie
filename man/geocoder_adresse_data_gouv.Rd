@@ -20,4 +20,3 @@ A matrix of the infile
 Géocoder des adresses à partir de l'API adresse.data.gouv.fr.
 }
 \keyword{internal}
-

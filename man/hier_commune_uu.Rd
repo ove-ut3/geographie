@@ -23,4 +23,3 @@ Renvoie le code d'unité urbaine à partir du code commune.
 geographie::hier_commune_uu(c("01001", "33003"))
 
 }
-

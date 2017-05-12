@@ -18,4 +18,3 @@ Le champ \code{sans_bp_cs} contient l'adresse originale, sans la BP/CS si celle-
 Extraire d'une adresse la boite postale et/ou la course spéciale (CS).
 }
 \keyword{internal}
-

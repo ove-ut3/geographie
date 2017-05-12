@@ -21,9 +21,8 @@ Obtenir le libellé de département à partir du code département.
 \examples{
 geographie::lib_departement(c("01", "33"))
 
-# Création d'un champ dans un data frame avec la fonction "mutate"
+# CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
 dplyr::data_frame(code_departement = c("01", "33")) \%>\%
   dplyr::mutate(libelle = geographie::lib_departement(code_departement))
 
 }
-

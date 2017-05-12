@@ -18,4 +18,3 @@ Un vecteur numérique contenant la position de départ de l'adresse.
 Localiser une adresse dans une chaine de caractères.
 }
 \keyword{internal}
-

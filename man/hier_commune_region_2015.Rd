@@ -22,4 +22,3 @@ Obtenir le code région (2015 et avant) à partir d'un code commune.
 geographie::hier_commune_region_2015(c("01001", "33003"))
 
 }
-

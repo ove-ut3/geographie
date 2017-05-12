@@ -22,4 +22,3 @@ Obtenir le code pays INSEE à partir du code pays EU.
 geographie::conv_pays_eu_insee(c("FR", "DE"))
 
 }
-

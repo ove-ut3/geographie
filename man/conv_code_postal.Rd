@@ -22,4 +22,3 @@ Obtenir le code postal correspondant à une commune (à partir d'un code postal 
 geographie::conv_code_postal(c("75015", "75115"))
 
 }
-

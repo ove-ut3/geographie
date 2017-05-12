@@ -62,4 +62,3 @@ geographie::geocoder_adresse(c("1 Rue Descartes 75005 Paris", "Place Recteur Hen
 geographie::geocoder_adresse(c("1 Rue Descartes 75005 Paris", "Place Recteur Henri le Moal 35000 Rennes"),
   service = "googlemaps")
 }
-

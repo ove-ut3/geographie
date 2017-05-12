@@ -25,4 +25,3 @@ geographie::conv_cp_ville_commune(code_postal = c("17000", "34010"),
   lib_commune = c("La Rochelle", "Montpellier"))
 
 }
-

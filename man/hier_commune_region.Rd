@@ -22,4 +22,3 @@ Obtenir le code région à partir d'un code commune.
 geographie::hier_commune_region(c("01001", "33003"))
 
 }
-

@@ -23,4 +23,3 @@ Obtenir le code postal à partir d'un code commune.
 geographie::conv_commune_cp(c("18110", "38061"))
 
 }
-

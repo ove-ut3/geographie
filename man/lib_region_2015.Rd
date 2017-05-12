@@ -21,9 +21,8 @@ Obtenir le libellé de région (2015 et avant) à partir du code région.
 \examples{
 geographie::lib_region_2015(c("82", "72"))
 
-# Création d'un champ dans un data frame avec la fonction "mutate"
+# CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
 dplyr::data_frame(code_region_2015 = c("82", "72")) \%>\%
   dplyr::mutate(libelle = geographie::lib_region_2015(code_region_2015))
 
 }
-

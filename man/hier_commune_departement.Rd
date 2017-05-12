@@ -22,4 +22,3 @@ Obtenir le code département à partir d'un code commune.
 geographie::hier_commune_departement(c("01001", "33003"))
 
 }
-
