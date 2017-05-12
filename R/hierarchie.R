@@ -151,5 +151,78 @@ hier_commune_region_2015 <- function(code_commune) {
   return(conv_commune_region_2015)
 }
 
-# hier_departement_region
-# hier_departement_region_2015
+#' Obtenir le code region a partir d'un code departement
+#'
+#' Obtenir le code région à partir d'un code département.
+#'
+#' @param code_commune Un vecteur de code département.
+#'
+#' @return Un vecteur de code de région.
+#'
+#' Jeu de données source : \code{geographie::data_departement}.\cr
+#' Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
+#'
+#' @examples
+#' geographie::hier_departement_region(c("003", "056"))
+#'
+#' @export
+hier_departement_region <- function(code_departement) {
+
+  if (class(code_departement) != "character") {
+    stop("Le code département doit être de type character", call. = FALSE)
+  }
+
+  if (which(!is.na(code_departement)) %>% length() == 0) {
+    message("Tous les codes département sont vides")
+    return(code_departement)
+  }
+
+  test_longueur <- purrr::map_int(code_departement, nchar, keepNA = TRUE) == 3
+  if (all(test_longueur, na.rm = TRUE) == FALSE) {
+    message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+  }
+
+  hier_departement_region <- dplyr::data_frame(code_departement) %>%
+    dplyr::left_join(dplyr::select(geographie::data_departement, code_departement, code_region), by = "code_departement") %>%
+    .[["code_region"]]
+
+  return(hier_departement_region)
+}
+
+#' Obtenir le code region (2015 et avant) a partir d'un code departement
+#'
+#' Obtenir le code région (2015 et avant) à partir d'un code département.
+#'
+#' @param code_commune Un vecteur de code département.
+#'
+#' @return Un vecteur de code de région (2015 et avant).
+#'
+#' Jeu de données source : \code{geographie::data_departement}.\cr
+#' Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
+#'
+#' @examples
+#' geographie::hier_departement_region_2015(c("003", "056"))
+#'
+#' @export
+hier_departement_region_2015 <- function(code_departement) {
+
+  if (class(code_departement) != "character") {
+    stop("Le code département doit être de type character", call. = FALSE)
+  }
+
+  if (which(!is.na(code_departement)) %>% length() == 0) {
+    message("Tous les codes département sont vides")
+    return(code_departement)
+  }
+
+  test_longueur <- purrr::map_int(code_departement, nchar, keepNA = TRUE) == 3
+  if (all(test_longueur, na.rm = TRUE) == FALSE) {
+    message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+  }
+
+  hier_departement_region_2015 <- dplyr::data_frame(code_departement) %>%
+    dplyr::left_join(dplyr::select(geographie::data_departement, code_departement, code_region_2015), by = "code_departement") %>%
+    .[["code_region_2015"]]
+
+  return(hier_departement_region_2015)
+}
