@@ -304,8 +304,7 @@ lib_region <- function(code_region) {
   }
 
   lib_region <- dplyr::data_frame(code_region) %>%
-    dplyr::left_join(dplyr::select(geographie::data_ods_geo, code_region, lib_region) %>% unique(),
-                     by = "code_region") %>%
+    dplyr::left_join(geographie::data_region, by = "code_region") %>%
     .[["lib_region"]]
 
   return(lib_region)
