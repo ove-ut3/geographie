@@ -3,7 +3,7 @@
 #' @export
 data <- function() {
 
-  data_ptt <- importr::importer_table_access("PTT", paste0(racine_packages, "geographie/Tables_ref.accdb")) %>%
+  data_ptt <- importr::importer_table_access("PTT", paste0(racine_packages, "geographie/data/Tables_ref.accdb")) %>%
     dplyr::rename(code_commune = com_code)
   save("data_ptt", file = paste0(racine_packages, "geographie/data/data_ptt.RData"))
 
@@ -14,16 +14,16 @@ data <- function() {
     dplyr::rename(code_commune = com_code, lib_commune = com_nom, code_uu = uu_code, lib_uu = uucr_nom, code_departement = dep_code, lib_departement = dep_nom, code_region = reg_code, lib_region = reg_nom, code_region_2015 = reg_code_old, lib_region_2015 = reg_nom_old)
   save("data_ods_geo", file = paste0(racine_packages, "geographie/data/data_ods_geo.RData"))
 
-  data_departement <- importr::importer_table_access("Departement", paste0(racine_packages, "geographie/Tables_ref.accdb"))
+  data_departement <- importr::importer_table_access("Departement", paste0(racine_packages, "geographie/data/Tables_ref.accdb"))
   save("data_departement", file = paste0(racine_packages, "geographie/data/data_departement.RData"))
 
-  data_pays <- importr::importer_table_access("Pays", paste0(racine_packages, "geographie/Tables_ref.accdb"))
+  data_pays <- importr::importer_table_access("Pays", paste0(racine_packages, "geographie/data/Tables_ref.accdb"))
   save("data_pays", file = paste0(racine_packages, "geographie/data/data_pays.RData"))
 
-  data_type_voie <- importr::importer_table_access("Adresse_voie_type", paste0(racine_packages, "geographie/Tables_ref.accdb"))
+  data_type_voie <- importr::importer_table_access("Adresse_voie_type", paste0(racine_packages, "geographie/data/Tables_ref.accdb"))
   save("data_type_voie", file = paste0(racine_packages, "geographie/data/data_type_voie.RData"))
 
-  data_adresse_voie_prx <- importr::importer_table_access("Adresse_voie_prx", paste0(racine_packages, "geographie/Tables_ref.accdb"))
+  data_adresse_voie_prx <- importr::importer_table_access("Adresse_voie_prx", paste0(racine_packages, "geographie/data/Tables_ref.accdb"))
   save("data_adresse_voie_prx", file = paste0(racine_packages, "geographie/data/data_adresse_voie_prx.RData"))
 
   data_cp_ville_commune <- dplyr::select(data_ptt, code_postal, lib_commune1 = nom_localite, code_commune) %>%
