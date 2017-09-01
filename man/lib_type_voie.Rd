@@ -12,7 +12,7 @@ lib_type_voie(code_type_voie)
 \value{
 Un vecteur de libellé de type de voie.
 
-Jeu de données source : \code{geographie::data_type_voie}.\cr
+Jeu de données source : \code{geographie::type_voie}.\cr
 Il est créé à partir de la table "Adresse_voie_type" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 }
 \description{
@@ -22,7 +22,7 @@ Obtenir le libellé de type de voie à partir du code.
 geographie::lib_type_voie(c("AV", "BD", "QUA"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::data_frame(code_type_voie = c("AV", "BD", "QUA")) \%>\%
+tibble::tibble(code_type_voie = c("AV", "BD", "QUA")) \%>\%
   dplyr::mutate(libelle = geographie::lib_type_voie(code_type_voie))
 
 }

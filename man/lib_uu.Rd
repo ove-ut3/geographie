@@ -12,7 +12,7 @@ lib_uu(code_uu)
 \value{
 Un vecteur de libellé d'unité urbaine.
 
-Jeu de données source : \code{geographie::data_ods_geo}.\cr
+Jeu de données source : \code{geographie::ods_geo}.\cr
 Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
@@ -22,7 +22,7 @@ Obtenir le libellé d'unité urbaine à partir d'un code d'unité urbaine.
 geographie::lib_uu(c("01302", "33701"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::data_frame(code_uu = c("01302", "33701")) \%>\%
+tibble::tibble(code_uu = c("01302", "33701")) \%>\%
   dplyr::mutate(libelle = geographie::lib_uu(code_uu))
 
 }

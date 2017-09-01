@@ -14,7 +14,7 @@ lib_pays_eu(code_pays_eu, langue = "fr")
 \value{
 Un vecteur de libellé de pays.
 
-Jeu de données source : \code{geographie::data_ods_geo}.\cr
+Jeu de données source : \code{geographie::ods_geo}.\cr
 Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 }
 \description{
@@ -24,7 +24,7 @@ Obtenir le libellé de pays à partir d'un code pays (code INSEE).
 geographie::lib_pays_eu(c("FR", "DE"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::data_frame(code_pays = c("FR", "DE")) \%>\%
+tibble::tibble(code_pays = c("FR", "DE")) \%>\%
   dplyr::mutate(libelle = geographie::lib_pays_eu(code_pays),
                 libelle_en = geographie::lib_pays_eu(code_pays, langue = "en"))
 

@@ -4,7 +4,7 @@
 \alias{geocoder_adresse_google}
 \title{Geocoder des adresses a partir de l'API google}
 \usage{
-geocoder_adresse_google(adresse, timeout = 10, cle_google)
+geocoder_adresse_google(adresse, timeout = 10)
 }
 \arguments{
 \item{adresse}{Un vecteur d'adresses.}

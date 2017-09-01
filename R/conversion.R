@@ -7,7 +7,7 @@
 #' @return Un vecteur de code commune.\cr
 #' Seuls les codes communes non-doublonnés sont retournés.
 #'
-#' Jeu de données source : \code{geographie::data_ptt}.\cr
+#' Jeu de données source : \code{geographie::ptt}.\cr
 #' Il est créé à partir de la table "N_PTT" de la BCE.
 #'
 #' @examples
@@ -26,11 +26,11 @@ conv_cp_commune <- function(code_postal) {
     message("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_cp_commune <- dplyr::select(geographie::data_ptt, code_postal, code_commune) %>%
+  conv_cp_commune <- dplyr::select(geographie::ptt, code_postal, code_commune) %>%
     dplyr::group_by(code_postal) %>%
     dplyr::filter(n() == 1) %>%
     dplyr::ungroup() %>%
-    dplyr::left_join(dplyr::data_frame(code_postal), ., by = "code_postal") %>%
+    dplyr::left_join(tibble::tibble(code_postal), ., by = "code_postal") %>%
     .[["code_commune"]]
 
   return(conv_cp_commune)
@@ -45,7 +45,7 @@ conv_cp_commune <- function(code_postal) {
 #'
 #' @return Un vecteur de code commune.
 #'
-#' Jeu de données source : \code{geographie::data_cp_ville_commune}.\cr
+#' Jeu de données source : \code{geographie::cp_ville_commune}.\cr
 #' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
@@ -76,8 +76,8 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
     caractr::sans_accent() %>%
     toupper()
 
-  conv_cp_ville_commune <- dplyr::left_join(dplyr::data_frame(code_postal, lib_commune),
-                                            geographie::data_cp_ville_commune,
+  conv_cp_ville_commune <- dplyr::left_join(tibble::tibble(code_postal, lib_commune),
+                                            geographie::cp_ville_commune,
                                             by = c("code_postal", "lib_commune")) %>%
     .[["code_commune"]]
 
@@ -93,7 +93,7 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
 #' @return Un vecteur de code postaux.\cr
 #' Seuls les codes postaux non-doublonnés sont retournés.
 #'
-#' Jeu de données source : \code{geographie::data_ptt}.\cr
+#' Jeu de données source : \code{geographie::ptt}.\cr
 #' Il est créé à partir de la table "N_PTT" de la BCE.
 #'
 #' @examples
@@ -116,13 +116,13 @@ conv_commune_cp <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_commune_cp <- dplyr::select(geographie::data_ptt, code_commune, particularite_commune, code_postal) %>%
+  conv_commune_cp <- dplyr::select(geographie::ptt, code_commune, particularite_commune, code_postal) %>%
     dplyr::filter(particularite_commune %in% c(NA, "*")) %>%
     dplyr::select(code_commune, code_postal) %>%
     dplyr::group_by(code_commune) %>%
     dplyr::filter(row_number() == 1) %>%
     dplyr::ungroup() %>%
-    dplyr::left_join(dplyr::data_frame(code_commune), ., by = "code_commune") %>%
+    dplyr::left_join(tibble::tibble(code_commune), ., by = "code_commune") %>%
     .[["code_postal"]]
 
   return(conv_commune_cp)
@@ -136,7 +136,7 @@ conv_commune_cp <- function(code_commune) {
 #'
 #' @return Un vecteur de codes postaux correspondant à un code commune.
 #'
-#' Jeu de données source : \code{geographie::data_ptt}.\cr
+#' Jeu de données source : \code{geographie::ptt}.\cr
 #' Il est créé à partir de la table "N_PTT" de la BCE.
 #'
 #' @examples
@@ -154,11 +154,11 @@ conv_code_postal <- function(code_postal) {
     message("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_code_postal <- dplyr::select(geographie::data_ptt, code_postal, code_commune) %>%
+  conv_code_postal <- dplyr::select(geographie::ptt, code_postal, code_commune) %>%
     dplyr::group_by(code_postal) %>%
     dplyr::filter(n() == 1) %>%
     dplyr::ungroup() %>%
-    dplyr::left_join(dplyr::data_frame(code_postal), ., by = "code_postal") %>%
+    dplyr::left_join(tibble::tibble(code_postal), ., by = "code_postal") %>%
     dplyr::mutate(code_postal = conv_commune_cp(code_commune)) %>%
     .[["code_postal"]]
 
@@ -171,7 +171,7 @@ conv_code_postal <- function(code_postal) {
 #'
 #' @param code_pays_eu Un vecteur de code pays EU.
 #'
-#' Jeu de données source : \code{geographie::data_pays}.\cr
+#' Jeu de données source : \code{geographie::pays}.\cr
 #' Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 #'
 #' @return Un vecteur de code pays INSEE.
@@ -196,8 +196,8 @@ conv_pays_eu_insee <- function(code_pays_eu) {
     message("Au moins un code pays n'est pas de longueur 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_pays_eu_insee <- dplyr::data_frame(code_pays_eu) %>%
-    dplyr::left_join(geographie::data_pays, by = c("code_pays_eu" = "code_pays_iso2")) %>%
+  conv_pays_eu_insee <- tibble::tibble(code_pays_eu) %>%
+    dplyr::left_join(geographie::pays, by = c("code_pays_eu" = "code_pays_iso2")) %>%
     .[["code_pays"]]
 
   return(conv_pays_eu_insee)

@@ -12,7 +12,7 @@ conv_code_postal(code_postal)
 \value{
 Un vecteur de codes postaux correspondant à un code commune.
 
-Jeu de données source : \code{geographie::data_ptt}.\cr
+Jeu de données source : \code{geographie::ptt}.\cr
 Il est créé à partir de la table "N_PTT" de la BCE.
 }
 \description{

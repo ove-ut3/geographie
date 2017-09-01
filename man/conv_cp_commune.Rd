@@ -13,7 +13,7 @@ conv_cp_commune(code_postal)
 Un vecteur de code commune.\cr
 Seuls les codes communes non-doublonnés sont retournés.
 
-Jeu de données source : \code{geographie::data_ptt}.\cr
+Jeu de données source : \code{geographie::ptt}.\cr
 Il est créé à partir de la table "N_PTT" de la BCE.
 }
 \description{

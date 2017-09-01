@@ -12,7 +12,7 @@ hier_departement_region(code_departement)
 \value{
 Un vecteur de code de région.
 
-Jeu de données source : \code{geographie::data_departement}.\cr
+Jeu de données source : \code{geographie::departement}.\cr
 Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
 }
 \description{

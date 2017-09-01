@@ -12,7 +12,7 @@ lib_region_2015(code_region_2015)
 \value{
 Un vecteur de libellé de région (2015 et avant).
 
-Jeu de données source : \code{geographie::data_ods_geo}.\cr
+Jeu de données source : \code{geographie::ods_geo}.\cr
 Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
@@ -22,7 +22,7 @@ Obtenir le libellé de région (2015 et avant) à partir du code région.
 geographie::lib_region_2015(c("82", "72"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::data_frame(code_region_2015 = c("82", "72")) \%>\%
+tibble::tibble(code_region_2015 = c("82", "72")) \%>\%
   dplyr::mutate(libelle = geographie::lib_region_2015(code_region_2015))
 
 }

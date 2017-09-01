@@ -6,7 +6,7 @@
 #'
 #' @return Un vecteur de code d'unité urbaine.
 #'
-#' Jeu de données source : \code{geographie::data_ods_geo}.\cr
+#' Jeu de données source : \code{geographie::ods_geo}.\cr
 #' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
@@ -30,8 +30,8 @@ hier_commune_uu <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  hier_commune_uu <- dplyr::data_frame(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::data_ods_geo, code_commune, code_uu), by = "code_commune") %>%
+  hier_commune_uu <- tibble::tibble(code_commune) %>%
+    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_uu), by = "code_commune") %>%
     .[["code_uu"]]
 
   return(hier_commune_uu)
@@ -45,7 +45,7 @@ hier_commune_uu <- function(code_commune) {
 #'
 #' @return Un vecteur de code de département.
 #'
-#' Jeu de données source : \code{geographie::data_ods_geo}.\cr
+#' Jeu de données source : \code{geographie::ods_geo}.\cr
 #' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
@@ -68,8 +68,8 @@ hier_commune_departement <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_commune_departement <- dplyr::data_frame(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::data_ods_geo, code_commune, code_departement), by = "code_commune") %>%
+  conv_commune_departement <- tibble::tibble(code_commune) %>%
+    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_departement), by = "code_commune") %>%
     .[["code_departement"]]
 
   return(conv_commune_departement)
@@ -83,7 +83,7 @@ hier_commune_departement <- function(code_commune) {
 #'
 #' @return Un vecteur de code de région.
 #'
-#' Jeu de données source : \code{geographie::data_ods_geo}.\cr
+#' Jeu de données source : \code{geographie::ods_geo}.\cr
 #' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
@@ -106,8 +106,8 @@ hier_commune_region <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_commune_region <- dplyr::data_frame(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::data_ods_geo, code_commune, code_region), by = "code_commune") %>%
+  conv_commune_region <- tibble::tibble(code_commune) %>%
+    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region), by = "code_commune") %>%
     .[["code_region"]]
 
   return(conv_commune_region)
@@ -121,7 +121,7 @@ hier_commune_region <- function(code_commune) {
 #'
 #' @return Un vecteur de code de région (2015 et avant).
 #'
-#' Jeu de données source : \code{geographie::data_ods_geo}.\cr
+#' Jeu de données source : \code{geographie::ods_geo}.\cr
 #' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
@@ -144,8 +144,8 @@ hier_commune_region_2015 <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_commune_region_2015 <- dplyr::data_frame(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::data_ods_geo, code_commune, code_region_2015), by = "code_commune") %>%
+  conv_commune_region_2015 <- tibble::tibble(code_commune) %>%
+    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region_2015), by = "code_commune") %>%
     .[["code_region_2015"]]
 
   return(conv_commune_region_2015)
@@ -159,7 +159,7 @@ hier_commune_region_2015 <- function(code_commune) {
 #'
 #' @return Un vecteur de code de région.
 #'
-#' Jeu de données source : \code{geographie::data_departement}.\cr
+#' Jeu de données source : \code{geographie::departement}.\cr
 #' Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
 #'
 #' @examples
@@ -182,8 +182,8 @@ hier_departement_region <- function(code_departement) {
     message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  hier_departement_region <- dplyr::data_frame(code_departement) %>%
-    dplyr::left_join(dplyr::select(geographie::data_departement, code_departement, code_region), by = "code_departement") %>%
+  hier_departement_region <- tibble::tibble(code_departement) %>%
+    dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region), by = "code_departement") %>%
     .[["code_region"]]
 
   return(hier_departement_region)
@@ -197,7 +197,7 @@ hier_departement_region <- function(code_departement) {
 #'
 #' @return Un vecteur de code de région (2015 et avant).
 #'
-#' Jeu de données source : \code{geographie::data_departement}.\cr
+#' Jeu de données source : \code{geographie::departement}.\cr
 #' Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
 #'
 #' @examples
@@ -220,8 +220,8 @@ hier_departement_region_2015 <- function(code_departement) {
     message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  hier_departement_region_2015 <- dplyr::data_frame(code_departement) %>%
-    dplyr::left_join(dplyr::select(geographie::data_departement, code_departement, code_region_2015), by = "code_departement") %>%
+  hier_departement_region_2015 <- tibble::tibble(code_departement) %>%
+    dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region_2015), by = "code_departement") %>%
     .[["code_region_2015"]]
 
   return(hier_departement_region_2015)

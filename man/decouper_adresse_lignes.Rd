@@ -15,7 +15,7 @@ Chaque élément de liste contient un vecteur dont la taille correspond au nombr
 
 Le découpage est réalisé selon trois critères :\cr
  - Le caractère de saut de ligne\cr
- - La présence d'un libellé de type voie renseigné dans la table \code{geographie::data_adresse_voie_prx}\cr
+ - La présence d'un libellé de type voie renseigné dans la table \code{geographie::adresse_voie_prx}\cr
  - La présence d'une boite postale (BP) ou d'une course spéciale (CS)
 }
 \description{

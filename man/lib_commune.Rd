@@ -12,7 +12,7 @@ lib_commune(code_commune)
 \value{
 Un vecteur de libellé de commune.
 
-Jeu de données source : \code{geographie::data_ods_geo}.\cr
+Jeu de données source : \code{geographie::ods_geo}.\cr
 Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
@@ -22,7 +22,7 @@ Obtenir le libellé de commune à partir d'un code commune.
 geographie::lib_commune(c("01001", "33003"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::data_frame(code_commune = c("01001", "33003")) \%>\%
+tibble::tibble(code_commune = c("01001", "33003")) \%>\%
   dplyr::mutate(libelle = geographie::lib_commune(code_commune))
 
 }

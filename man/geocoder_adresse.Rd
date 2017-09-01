@@ -4,8 +4,7 @@
 \alias{geocoder_adresse}
 \title{Obtenir le resultat des API (adresse.data.gouv.fr et google) a partir de l'adresse complete}
 \usage{
-geocoder_adresse(adresse, service, nettoyer_adresse = TRUE, timeout = 10,
-  cle_google = NULL)
+geocoder_adresse(adresse, service, nettoyer_adresse = TRUE, timeout = 10)
 }
 \arguments{
 \item{adresse}{Un vecteur d'adresses.}
@@ -20,8 +19,8 @@ geocoder_adresse(adresse, service, nettoyer_adresse = TRUE, timeout = 10,
 Un data_frame avec une ligne par adresse soumise.\cr
 
 Les résultats des géocodages sont accumulés et sauvegardés :\cr
-- Dans \code{geographie::data_geocodage_data_gouv} pour le service \code{adresse.data.gouv.fr}\cr
-- Dans \code{geographie::data_geocodage_google} pour le service \code{googlemaps}\cr
+- Dans \code{geographie::geocodage_data_gouv} pour le service \code{adresse.data.gouv.fr}\cr
+- Dans \code{geographie::geocodage_google} pour le service \code{googlemaps}\cr
 
 Pour le service \code{adresse.data.gouv.fr}, le data frame contient les champs suivants :\cr
 - \code{adresse} : adresse initiale\cr

@@ -9,7 +9,7 @@
 #'
 #' Le découpage est réalisé selon trois critères :\cr
 #'  - Le caractère de saut de ligne\cr
-#'  - La présence d'un libellé de type voie renseigné dans la table \code{geographie::data_adresse_voie_prx}\cr
+#'  - La présence d'un libellé de type voie renseigné dans la table \code{geographie::adresse_voie_prx}\cr
 #'  - La présence d'une boite postale (BP) ou d'une course spéciale (CS)
 #'
 #' @examples
@@ -18,7 +18,7 @@
 #' @export
 decouper_adresse_lignes <- function(adresse) {
 
-  adresse_lignes <- dplyr::data_frame(adresse_init = adresse) %>%
+  adresse_lignes <- tibble::tibble(adresse_init = adresse) %>%
     dplyr::mutate(cle = row_number(),
           adresse = adresse_init) %>%
     tidyr::separate_rows(adresse, sep = "\n")
@@ -26,7 +26,7 @@ decouper_adresse_lignes <- function(adresse) {
   adresse_lignes <- dplyr::bind_cols(adresse_lignes, geographie::extraire_bp_cs(adresse_lignes$adresse)) %>%
     dplyr::select(cle, adresse = sans_bp_cs, bp_cs)
 
-  regex_adresse <- dplyr::filter(geographie::data_adresse_voie_prx, !(lib_voie %in% c("b[aâ]t(iment)?", "mail", "moulin")))
+  regex_adresse <- dplyr::filter(geographie::adresse_voie_prx, !(lib_voie %in% c("b[aâ]t(iment)?", "mail", "moulin")))
 
   regex_adresse_1 <- dplyr::filter(regex_adresse, !lib_voie %in% c("campus", "cit[eé]", "dom(aine)?", "parc", "parvis", "plateau", "plt", "villa")) %>%
     .[["lib_voie"]] %>%
@@ -85,7 +85,7 @@ extraire_bp_cs <- function(adresse) {
 
   extraction_bp_cs <- lapply(adresse, stringr::str_locate, stringr::regex("((b\\.?p\\.?|c\\.?s\\.?|tsa)\\s*\\d+.*)", ignore_case = TRUE)) %>%
     purrr::map_int(1) %>%
-    dplyr::data_frame(adresse, position_debut = .) %>%
+    tibble::tibble(adresse, position_debut = .) %>%
     dplyr::mutate(
       sans_bp_cs = ifelse(!is.na(position_debut),
                           substring(adresse, 1, position_debut - 1),

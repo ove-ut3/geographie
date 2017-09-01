@@ -10,8 +10,8 @@
 #' @return Un data_frame avec une ligne par adresse soumise.\cr
 #'
 #' Les résultats des géocodages sont accumulés et sauvegardés :\cr
-#' - Dans \code{geographie::data_geocodage_data_gouv} pour le service \code{adresse.data.gouv.fr}\cr
-#' - Dans \code{geographie::data_geocodage_google} pour le service \code{googlemaps}\cr
+#' - Dans \code{geographie::geocodage_data_gouv} pour le service \code{adresse.data.gouv.fr}\cr
+#' - Dans \code{geographie::geocodage_google} pour le service \code{googlemaps}\cr
 #'
 #' Pour le service \code{adresse.data.gouv.fr}, le data frame contient les champs suivants :\cr
 #' - \code{adresse} : adresse initiale\cr
@@ -50,13 +50,13 @@
 #'   service = "googlemaps")
 
 #' @export
-geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout = 10, cle_google = NULL) {
+geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout = 10) {
 
   if (!service %in% c("adresse.data.gouv.fr", "googlemaps")) {
     stop("Le service doit être \"adresse.data.gouv.fr\" ou \"googlemaps\"", call. = FALSE)
   }
 
-  geocoder_init <- dplyr::data_frame(adresse)
+  geocoder_init <- tibble::tibble(adresse)
 
   message("Géocodage \"", service, "\" : ", nrow(geocoder_init), " adresses soumises")
 
@@ -73,8 +73,8 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
   } else geocoder_init = dplyr::mutate(geocoder_init, adresse_nettoyee = adresse)
 
   if (service == "adresse.data.gouv.fr") {
-    base_geocodage <- charger_rdata(paste0(racine_packages, "geographie/data/data_geocodage_data_gouv.RData"), "data_geocodage_data_gouv")
-  } else if (service == "googlemaps") base_geocodage <- charger_rdata(paste0(racine_packages, "geographie/data/data_geocodage_google.RData"), "data_geocodage_google")
+    base_geocodage <- divr::charger_rdata(paste0(racine_packages, "geographie/data/geocodage_data_gouv.RData"))
+  } else if (service == "googlemaps") base_geocodage <- divr::charger_rdata(paste0(racine_packages, "geographie/data/geocodage_google.RData"))
 
   geocoder_ajout <- dplyr::anti_join(geocoder_init, base_geocodage, by = c("adresse_nettoyee" = "adresse"))
 
@@ -93,7 +93,7 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
     geocoder <- geocoder_adresse_data_gouv(adresse = geocoder$adresse_nettoyee %>% unique(), timeout = timeout)
 
   } else if (service == "googlemaps") {
-    geocoder <- geocoder_adresse_google(adresse = geocoder$adresse_nettoyee %>% unique(), timeout = timeout, cle_google = cle_google)
+    geocoder <- geocoder_adresse_google(adresse = geocoder$adresse_nettoyee %>% unique(), timeout = timeout)
 
   }
 
@@ -128,7 +128,7 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
 #' @keywords internal
 geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
 
-  geocoder <- dplyr::data_frame(adresse) %>%
+  geocoder <- tibble::tibble(adresse) %>%
     dplyr::mutate(appel_api = stringr::str_replace_all(adresse, " ", "+") %>%
                     paste0("http://api-adresse.data.gouv.fr/search/?limit=1&q=", .)
                   )
@@ -138,7 +138,7 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
                           timeout = timeout,
                           format_api = "json")
 
-  geocoder <- dplyr::data_frame(appel_api = geocoder$appel_api %>% unique(),
+  geocoder <- tibble::tibble(appel_api = geocoder$appel_api %>% unique(),
                                 resultat = purrr::map(geocodage, "result"),
                                 erreur = purrr::map(geocodage, "error")) %>%
     dplyr::left_join(geocoder, ., by = "appel_api")
@@ -190,14 +190,14 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
 
   geocoder <- dplyr::select(geocoder, -appel_api, -resultat)
 
-  data_geocodage_data_gouv <- dplyr::filter(geocoder, purrr::map_lgl(erreur, is.null)) %>%
+  geocodage_data_gouv <- dplyr::filter(geocoder, purrr::map_lgl(erreur, is.null)) %>%
     dplyr::select(-erreur) %>%
-    dplyr::bind_rows(charger_rdata(paste0(racine_packages, "geographie/data/data_geocodage_data_gouv.RData"), "data_geocodage_data_gouv")) %>%
+    dplyr::bind_rows(divr::charger_rdata(paste0(racine_packages, "geographie/data/geocodage_data_gouv.RData"))) %>%
     dplyr::arrange(adresse)
 
   message("Sauvegarde package \"geographie\": ", nrow(data_geocodage_data_gouv), " adresses au total")
   message("")
-  save("data_geocodage_data_gouv", file = paste0(racine_packages, "geographie/data/data_geocodage_data_gouv.RData"))
+  save("geocodage_data_gouv", file = paste0(racine_packages, "geographie/data/geocodage_data_gouv.RData"))
 
   return(geocoder)
 }
@@ -213,9 +213,9 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
 #'
 #' @export
 #' @keywords internal
-geocoder_adresse_google <- function(adresse, timeout = 10, cle_google) {
+geocoder_adresse_google <- function(adresse, timeout = 10) {
 
-  geocoder <- dplyr::data_frame(adresse) %>%
+  geocoder <- tibble::tibble(adresse) %>%
     dplyr::mutate(appel_api = stringr::str_replace_all(adresse, " ", "+") %>%
                     paste0("https://maps.googleapis.com/maps/api/geocode/json?key=", cle_google, "&address=", .)
     )
@@ -227,7 +227,7 @@ geocoder_adresse_google <- function(adresse, timeout = 10, cle_google) {
   if (test_quota == "OVER_QUERY_LIMIT") {
     message("Aucun géocodage : quota de 2500 requêtes par jour dépassé")
     geocoder <- left_join(geocoder_init,
-                          charger_rdata(paste0(racine_packages, "geographie/data/data_geocodage_google.RData"), "data_geocodage_google"),
+                          divr::charger_rdata(paste0(racine_packages, "geographie/data/geocodage_google.RData")),
                           by = c("adresse_nettoyee" = "adresse"))
     return(geocoder)
   }
@@ -237,9 +237,9 @@ geocoder_adresse_google <- function(adresse, timeout = 10, cle_google) {
                                  timeout = timeout,
                                  format_api = "json")
 
-  geocoder <- dplyr::data_frame(appel_api = geocoder$appel_api %>% unique(),
-                                resultat = purrr::map(geocodage, "result"),
-                                erreur = purrr::map_chr(geocodage, ~ ifelse(is.null(.$error), "", .$error))) %>%
+  geocoder <- tibble::tibble(appel_api = geocoder$appel_api %>% unique(),
+                             resultat = purrr::map(geocodage, "result"),
+                             erreur = purrr::map_chr(geocodage, ~ ifelse(is.null(.$error), "", .$error))) %>%
     dplyr::left_join(geocoder, ., by = "appel_api")
 
 
@@ -259,16 +259,16 @@ geocoder_adresse_google <- function(adresse, timeout = 10, cle_google) {
                   statut = purrr::map_chr(resultat, ~ .$status)) %>%
     dplyr::select(-resultat) %>%
     dplyr::left_join(geocoder, ., by = "appel_api") %>%
-    select(adresse, latitude, longitude, type_localisation, statut, erreur, date_ajout)
+    dplyr::select(adresse, latitude, longitude, type_localisation, statut, erreur, date_ajout)
 
-  data_geocodage_google <- dplyr::filter(geocoder, !nchar(erreur) != 0) %>%
+  geocodage_google <- dplyr::filter(geocoder, !nchar(erreur) != 0) %>%
     dplyr::select(-erreur, -statut) %>%
-    dplyr::bind_rows(charger_rdata(paste0(racine_packages, "geographie/data/data_geocodage_google.RData"), "data_geocodage_google")) %>%
+    dplyr::bind_rows(divr::charger_rdata(paste0(racine_packages, "geographie/data/geocodage_google.RData"))) %>%
     dplyr::arrange(adresse)
 
-  message("Sauvegarde package \"geographie\": ", nrow(data_geocodage_google), " adresses au total")
+  message("Sauvegarde package \"geographie\": ", nrow(geocodage_google), " adresses au total")
   message("")
-  save("data_geocodage_google", file = paste0(racine_packages, "geographie/data/data_geocodage_google.RData"))
+  save("geocodage_google", file = paste0(racine_packages, "geographie/data/geocodage_google.RData"))
 
   if (any(geocodage$status == "OVER_QUERY_LIMIT") == TRUE) {
     message("Géocodage partiel : quota de 2500 requêtes par jour dépassé")

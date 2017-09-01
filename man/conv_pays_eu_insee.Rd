@@ -9,7 +9,7 @@ conv_pays_eu_insee(code_pays_eu)
 \arguments{
 \item{code_pays_eu}{Un vecteur de code pays EU.
 
-Jeu de données source : \code{geographie::data_pays}.\cr
+Jeu de données source : \code{geographie::pays}.\cr
 Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").}
 }
 \value{

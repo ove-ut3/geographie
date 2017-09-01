@@ -12,7 +12,7 @@ lib_departement(code_departement)
 \value{
 Un vecteur de libellé de département.
 
-Jeu de données source : \code{geographie::data_ods_geo}.\cr
+Jeu de données source : \code{geographie::ods_geo}.\cr
 Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
@@ -22,7 +22,7 @@ Obtenir le libellé de département à partir du code département.
 geographie::lib_departement(c("01", "33"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::data_frame(code_departement = c("01", "33")) \%>\%
+tibble::tibble(code_departement = c("01", "33")) \%>\%
   dplyr::mutate(libelle = geographie::lib_departement(code_departement))
 
 }
