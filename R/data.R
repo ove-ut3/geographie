@@ -1,8 +1,8 @@
-#' data
+#' generer_data
 #'
 #' @export
 #' @keywords internal
-data <- function() {
+generer_data <- function() {
 
   ptt <- importr::importer_table_access("PTT", paste0(racine_packages, "geographie/Tables_ref.accdb")) %>%
     dplyr::rename(code_commune = com_code)
