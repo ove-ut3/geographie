@@ -352,4 +352,48 @@ lib_region_2015 <- function(code_region_2015) {
 
   return(lib_region_2015)
 }
+
+#' Obtenir le libelle de nationalite a partir d'un code pays (code INSEE)
+#'
+#' Obtenir le libellé de nationalité à partir d'un code pays (code INSEE).
+#'
+#' @param code_pays Un vecteur de code pays (code INSEE).
+#'
+#' @return Un vecteur de libellé de nationalité.
+#'
+#' Jeu de données source : \code{geographie::pays}.\cr
+#' Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
+#'
+#' @examples
+#' geographie::lib_nationalite(c("100", "109"))
+#'
+#' # Création d'un champ dans un data frame avec la fonction "mutate"
+#' tibble::tibble(code_pays = c("100", "109")) %>%
+#'   dplyr::mutate(libelle = geographie::lib_nationalite(code_pays))
+#'
+#' @export
+lib_nationalite <- function(code_pays) {
+
+  if (class(code_pays) != "character") {
+    stop("Le code pays doit être de type character", call. = FALSE)
+  }
+
+  if (which(!is.na(code_pays)) %>% length() == 0) {
+    message("Tous les codes pays sont vides")
+    return(code_pays)
+  }
+
+  test_longueur <- purrr::map_int(code_pays, nchar, keepNA = TRUE) == 3
+  if (all(test_longueur, na.rm = TRUE) == FALSE) {
+    message("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+  }
+
+  lib_nationalite <- dplyr::select(geographie::pays, code_pays, lib_nationalite) %>%
+    dplyr::filter(!is.na(code_pays)) %>%
+    dplyr::left_join(tibble::tibble(code_pays), ., by = "code_pays") %>%
+    .[["lib_nationalite"]]
+
+  return(lib_nationalite)
+}
+
 # lib_langue
