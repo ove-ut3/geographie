@@ -10,11 +10,15 @@ License: Etalab
 Encoding: UTF-8
 LazyData: true
 Imports:
-	purrr,
-	dplyr,
-	tidyr,
+	caractr,
+	divr,
+  dplyr,
+  importr,
+	pbapply,
+  purrr,
+  readr,
 	stringr,
-  caractr,
-  pbapply,
-  webr
+	tibble,
+  tidyr,
+	webr
 RoxygenNote: 6.0.1
