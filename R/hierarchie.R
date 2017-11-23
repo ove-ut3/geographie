@@ -32,7 +32,7 @@ hier_commune_uu <- function(code_commune) {
 
   hier_commune_uu <- tibble::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_uu), by = "code_commune") %>%
-    .[["code_uu"]]
+    dplyr::pull(code_uu)
 
   return(hier_commune_uu)
 }
@@ -70,7 +70,7 @@ hier_commune_departement <- function(code_commune) {
 
   conv_commune_departement <- tibble::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_departement), by = "code_commune") %>%
-    .[["code_departement"]]
+    dplyr::pull(code_departement)
 
   return(conv_commune_departement)
 }
@@ -108,7 +108,7 @@ hier_commune_region <- function(code_commune) {
 
   conv_commune_region <- tibble::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region), by = "code_commune") %>%
-    .[["code_region"]]
+    dplyr::pull(code_region)
 
   return(conv_commune_region)
 }
@@ -146,7 +146,7 @@ hier_commune_region_2015 <- function(code_commune) {
 
   conv_commune_region_2015 <- tibble::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region_2015), by = "code_commune") %>%
-    .[["code_region_2015"]]
+    dplyr::pull(code_region_2015)
 
   return(conv_commune_region_2015)
 }
@@ -184,7 +184,7 @@ hier_departement_region <- function(code_departement) {
 
   hier_departement_region <- tibble::tibble(code_departement) %>%
     dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region), by = "code_departement") %>%
-    .[["code_region"]]
+    dplyr::pull(code_region)
 
   return(hier_departement_region)
 }
@@ -222,7 +222,7 @@ hier_departement_region_2015 <- function(code_departement) {
 
   hier_departement_region_2015 <- tibble::tibble(code_departement) %>%
     dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region_2015), by = "code_departement") %>%
-    .[["code_region_2015"]]
+    dplyr::pull(code_region_2015)
 
   return(hier_departement_region_2015)
 }

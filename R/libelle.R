@@ -35,7 +35,7 @@ lib_commune <- function(code_commune) {
 
   lib_commune <- tibble::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, lib_commune), by = "code_commune") %>%
-    .[["lib_commune"]]
+    dplyr::pull(lib_commune)
 
   return(lib_commune)
 }
@@ -76,10 +76,10 @@ lib_uu <- function(code_uu) {
   }
 
   lib_uu <- dplyr::select(geographie::ods_geo, code_uu, lib_uu) %>%
-    dplyr::filter(!is.na(code_uu)) %>%
+    tidyr::drop_na(code_uu) %>%
     unique() %>%
     dplyr::left_join(tibble::tibble(code_uu), ., by = "code_uu") %>%
-    .[["lib_uu"]]
+    dplyr::pull(lib_uu)
 
   return(lib_uu)
 }
@@ -129,7 +129,7 @@ lib_pays <- function(code_pays, langue = "fr") {
   else if (langue == "en") champ_lib_pays <- "lib_pays_en"
 
   lib_pays <- dplyr::select(geographie::pays, code_pays, lib_pays_fr, lib_pays_en) %>%
-    dplyr::filter(!is.na(code_pays)) %>%
+    tidyr::drop_na(code_pays) %>%
     dplyr::left_join(tibble::tibble(code_pays), ., by = "code_pays") %>%
     .[[champ_lib_pays]]
 
@@ -181,7 +181,7 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
   else if (langue == "en") champ_lib_pays <- "lib_pays_en"
 
   lib_pays_eu <- dplyr::select(geographie::pays, code_pays_eu = code_pays_iso2, lib_pays_fr, lib_pays_en) %>%
-    dplyr::filter(!is.na(code_pays_eu)) %>%
+    tidyr::drop_na(code_pays_eu) %>%
     dplyr::left_join(tibble::tibble(code_pays_eu), ., by = "code_pays_eu") %>%
     .[[champ_lib_pays]]
 
@@ -220,7 +220,7 @@ lib_type_voie <- function(code_type_voie) {
 
   lib_type_voie <- tibble::tibble(code_type_voie) %>%
     dplyr::left_join(dplyr::select(geographie::type_voie, code_type_voie, lib_type_voie), by = "code_type_voie") %>%
-    .[["lib_type_voie"]]
+    dplyr::pull(lib_type_voie)
 
   return(lib_type_voie)
 }
@@ -263,7 +263,7 @@ lib_departement <- function(code_departement) {
   lib_departement <- tibble::tibble(code_departement) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_departement, lib_departement) %>% unique(),
                      by = "code_departement") %>%
-    .[["lib_departement"]]
+    dplyr::pull(lib_departement)
 
   return(lib_departement)
 }
@@ -305,7 +305,7 @@ lib_region <- function(code_region) {
 
   lib_region <- tibble::tibble(code_region) %>%
     dplyr::left_join(geographie::region, by = "code_region") %>%
-    .[["lib_region"]]
+    dplyr::pull(lib_region)
 
   return(lib_region)
 }
@@ -348,7 +348,7 @@ lib_region_2015 <- function(code_region_2015) {
   lib_region_2015 <- tibble::tibble(code_region_2015) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_region_2015, lib_region_2015) %>% unique(),
                      by = "code_region_2015") %>%
-    .[["lib_region_2015"]]
+    dplyr::pull(lib_region_2015)
 
   return(lib_region_2015)
 }
@@ -389,9 +389,9 @@ lib_nationalite <- function(code_pays) {
   }
 
   lib_nationalite <- dplyr::select(geographie::pays, code_pays, lib_nationalite) %>%
-    dplyr::filter(!is.na(code_pays)) %>%
+    tidyr::drop_na(code_pays) %>%
     dplyr::left_join(tibble::tibble(code_pays), ., by = "code_pays") %>%
-    .[["lib_nationalite"]]
+    dplyr::pull(lib_nationalite)
 
   return(lib_nationalite)
 }

@@ -31,7 +31,7 @@ conv_cp_commune <- function(code_postal) {
     dplyr::filter(n() == 1) %>%
     dplyr::ungroup() %>%
     dplyr::left_join(tibble::tibble(code_postal), ., by = "code_postal") %>%
-    .[["code_commune"]]
+    dplyr::pull(code_commune)
 
   return(conv_cp_commune)
 }
@@ -79,7 +79,7 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
   conv_cp_ville_commune <- dplyr::left_join(tibble::tibble(code_postal, lib_commune),
                                             geographie::cp_ville_commune,
                                             by = c("code_postal", "lib_commune")) %>%
-    .[["code_commune"]]
+    dplyr::pull(code_commune)
 
   return(conv_cp_ville_commune)
 }
@@ -123,7 +123,7 @@ conv_commune_cp <- function(code_commune) {
     dplyr::filter(row_number() == 1) %>%
     dplyr::ungroup() %>%
     dplyr::left_join(tibble::tibble(code_commune), ., by = "code_commune") %>%
-    .[["code_postal"]]
+    dplyr::pull(code_postal)
 
   return(conv_commune_cp)
 }
@@ -160,7 +160,7 @@ conv_code_postal <- function(code_postal) {
     dplyr::ungroup() %>%
     dplyr::left_join(tibble::tibble(code_postal), ., by = "code_postal") %>%
     dplyr::mutate(code_postal = conv_commune_cp(code_commune)) %>%
-    .[["code_postal"]]
+    dplyr::pull(code_postal)
 
   return(conv_code_postal)
 }
@@ -198,7 +198,7 @@ conv_pays_eu_insee <- function(code_pays_eu) {
 
   conv_pays_eu_insee <- tibble::tibble(code_pays_eu) %>%
     dplyr::left_join(geographie::pays, by = c("code_pays_eu" = "code_pays_iso2")) %>%
-    .[["code_pays"]]
+    dplyr::pull(code_pays)
 
   return(conv_pays_eu_insee)
 }

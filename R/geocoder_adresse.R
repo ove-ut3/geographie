@@ -222,7 +222,7 @@ geocoder_adresse_google <- function(adresse, timeout = 10) {
 
   # Test dépassement quota
   test_quota <- webr::telecharger_url(geocoder$appel_api[1], format_api = "json") %>%
-    .[["status"]]
+    dplyr::pull(status)
 
   if (test_quota == "OVER_QUERY_LIMIT") {
     message("Aucun géocodage : quota de 2500 requêtes par jour dépassé")
