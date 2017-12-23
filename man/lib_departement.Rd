@@ -22,7 +22,7 @@ Obtenir le libellé de département à partir du code département.
 geographie::lib_departement(c("01", "33"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-tibble::tibble(code_departement = c("01", "33")) \%>\%
+dplyr::tibble(code_departement = c("01", "33")) \%>\%
   dplyr::mutate(libelle = geographie::lib_departement(code_departement))
 
 }

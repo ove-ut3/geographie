@@ -18,7 +18,7 @@
 #' @export
 decouper_adresse_lignes <- function(adresse) {
 
-  adresse_lignes <- tibble::tibble(adresse_init = adresse) %>%
+  adresse_lignes <- dplyr::tibble(adresse_init = adresse) %>%
     dplyr::mutate(cle = row_number(),
           adresse = adresse_init) %>%
     tidyr::separate_rows(adresse, sep = "\n")
@@ -85,7 +85,7 @@ extraire_bp_cs <- function(adresse) {
 
   extraction_bp_cs <- lapply(adresse, stringr::str_locate, stringr::regex("((b\\.?p\\.?|c\\.?s\\.?|tsa)\\s*\\d+.*)", ignore_case = TRUE)) %>%
     purrr::map_int(1) %>%
-    tibble::tibble(adresse, position_debut = .) %>%
+    dplyr::tibble(adresse, position_debut = .) %>%
     dplyr::mutate(
       sans_bp_cs = ifelse(!is.na(position_debut),
                           substring(adresse, 1, position_debut - 1),

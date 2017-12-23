@@ -24,7 +24,7 @@ Obtenir le libellé de pays à partir d'un code pays (code INSEE).
 geographie::lib_pays_eu(c("FR", "DE"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-tibble::tibble(code_pays = c("FR", "DE")) \%>\%
+dplyr::tibble(code_pays = c("FR", "DE")) \%>\%
   dplyr::mutate(libelle = geographie::lib_pays_eu(code_pays),
                 libelle_en = geographie::lib_pays_eu(code_pays, langue = "en"))
 

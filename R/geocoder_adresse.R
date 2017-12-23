@@ -56,7 +56,7 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
     stop("Le service doit être \"adresse.data.gouv.fr\" ou \"googlemaps\"", call. = FALSE)
   }
 
-  geocoder_init <- tibble::tibble(adresse)
+  geocoder_init <- dplyr::tibble(adresse)
 
   message("Géocodage \"", service, "\" : ", nrow(geocoder_init), " adresses soumises")
 
@@ -128,7 +128,7 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
 #' @keywords internal
 geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
 
-  geocoder <- tibble::tibble(adresse) %>%
+  geocoder <- dplyr::tibble(adresse) %>%
     dplyr::mutate(appel_api = stringr::str_replace_all(adresse, " ", "+") %>%
                     paste0("http://api-adresse.data.gouv.fr/search/?limit=1&q=", .)
                   )
@@ -138,7 +138,7 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
                           timeout = timeout,
                           format_api = "json")
 
-  geocoder <- tibble::tibble(appel_api = geocoder$appel_api %>% unique(),
+  geocoder <- dplyr::tibble(appel_api = geocoder$appel_api %>% unique(),
                                 resultat = purrr::map(geocodage, "result"),
                                 erreur = purrr::map(geocodage, "error")) %>%
     dplyr::left_join(geocoder, ., by = "appel_api")
@@ -215,7 +215,7 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
 #' @keywords internal
 geocoder_adresse_google <- function(adresse, timeout = 10) {
 
-  geocoder <- tibble::tibble(adresse) %>%
+  geocoder <- dplyr::tibble(adresse) %>%
     dplyr::mutate(appel_api = stringr::str_replace_all(adresse, " ", "+") %>%
                     paste0("https://maps.googleapis.com/maps/api/geocode/json?key=", cle_google, "&address=", .)
     )
@@ -237,7 +237,7 @@ geocoder_adresse_google <- function(adresse, timeout = 10) {
                                  timeout = timeout,
                                  format_api = "json")
 
-  geocoder <- tibble::tibble(appel_api = geocoder$appel_api %>% unique(),
+  geocoder <- dplyr::tibble(appel_api = geocoder$appel_api %>% unique(),
                              resultat = purrr::map(geocodage, "result"),
                              erreur = purrr::map_chr(geocodage, ~ ifelse(is.null(.$error), "", .$error))) %>%
     dplyr::left_join(geocoder, ., by = "appel_api")

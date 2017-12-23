@@ -18,7 +18,6 @@ Imports:
   purrr,
   readr,
 	stringr,
-	tibble,
-  tidyr,
+	tidyr,
 	webr
 RoxygenNote: 6.0.1

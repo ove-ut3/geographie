@@ -13,7 +13,7 @@
 #' geographie::lib_commune(c("01001", "33003"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_commune = c("01001", "33003")) %>%
+#' dplyr::tibble(code_commune = c("01001", "33003")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_commune(code_commune))
 #'
 #' @export
@@ -33,7 +33,7 @@ lib_commune <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_commune <- tibble::tibble(code_commune) %>%
+  lib_commune <- dplyr::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, lib_commune), by = "code_commune") %>%
     dplyr::pull(lib_commune)
 
@@ -55,7 +55,7 @@ lib_commune <- function(code_commune) {
 #' geographie::lib_uu(c("01302", "33701"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_uu = c("01302", "33701")) %>%
+#' dplyr::tibble(code_uu = c("01302", "33701")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_uu(code_uu))
 #'
 #' @export
@@ -78,7 +78,7 @@ lib_uu <- function(code_uu) {
   lib_uu <- dplyr::select(geographie::ods_geo, code_uu, lib_uu) %>%
     tidyr::drop_na(code_uu) %>%
     unique() %>%
-    dplyr::left_join(tibble::tibble(code_uu), ., by = "code_uu") %>%
+    dplyr::left_join(dplyr::tibble(code_uu), ., by = "code_uu") %>%
     dplyr::pull(lib_uu)
 
   return(lib_uu)
@@ -100,7 +100,7 @@ lib_uu <- function(code_uu) {
 #' geographie::lib_pays(c("100", "109"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_pays = c("100", "109")) %>%
+#' dplyr::tibble(code_pays = c("100", "109")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_pays(code_pays),
 #'                 libelle_en = geographie::lib_pays(code_pays, langue = "en"))
 #'
@@ -130,7 +130,7 @@ lib_pays <- function(code_pays, langue = "fr") {
 
   lib_pays <- dplyr::select(geographie::pays, code_pays, lib_pays_fr, lib_pays_en) %>%
     tidyr::drop_na(code_pays) %>%
-    dplyr::left_join(tibble::tibble(code_pays), ., by = "code_pays") %>%
+    dplyr::left_join(dplyr::tibble(code_pays), ., by = "code_pays") %>%
     .[[champ_lib_pays]]
 
   return(lib_pays)
@@ -152,7 +152,7 @@ lib_pays <- function(code_pays, langue = "fr") {
 #' geographie::lib_pays_eu(c("FR", "DE"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_pays = c("FR", "DE")) %>%
+#' dplyr::tibble(code_pays = c("FR", "DE")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_pays_eu(code_pays),
 #'                 libelle_en = geographie::lib_pays_eu(code_pays, langue = "en"))
 #'
@@ -182,7 +182,7 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
 
   lib_pays_eu <- dplyr::select(geographie::pays, code_pays_eu = code_pays_iso2, lib_pays_fr, lib_pays_en) %>%
     tidyr::drop_na(code_pays_eu) %>%
-    dplyr::left_join(tibble::tibble(code_pays_eu), ., by = "code_pays_eu") %>%
+    dplyr::left_join(dplyr::tibble(code_pays_eu), ., by = "code_pays_eu") %>%
     .[[champ_lib_pays]]
 
   return(lib_pays_eu)
@@ -203,7 +203,7 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
 #' geographie::lib_type_voie(c("AV", "BD", "QUA"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_type_voie = c("AV", "BD", "QUA")) %>%
+#' dplyr::tibble(code_type_voie = c("AV", "BD", "QUA")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_type_voie(code_type_voie))
 #'
 #' @export
@@ -218,7 +218,7 @@ lib_type_voie <- function(code_type_voie) {
     return(code_type_voie)
   }
 
-  lib_type_voie <- tibble::tibble(code_type_voie) %>%
+  lib_type_voie <- dplyr::tibble(code_type_voie) %>%
     dplyr::left_join(dplyr::select(geographie::type_voie, code_type_voie, lib_type_voie), by = "code_type_voie") %>%
     dplyr::pull(lib_type_voie)
 
@@ -240,7 +240,7 @@ lib_type_voie <- function(code_type_voie) {
 #' geographie::lib_departement(c("01", "33"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_departement = c("01", "33")) %>%
+#' dplyr::tibble(code_departement = c("01", "33")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_departement(code_departement))
 #'
 #' @export
@@ -260,7 +260,7 @@ lib_departement <- function(code_departement) {
     message("Au moins un code département n'est pas de longueur 2 ou 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_departement <- tibble::tibble(code_departement) %>%
+  lib_departement <- dplyr::tibble(code_departement) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_departement, lib_departement) %>% unique(),
                      by = "code_departement") %>%
     dplyr::pull(lib_departement)
@@ -283,7 +283,7 @@ lib_departement <- function(code_departement) {
 #' geographie::lib_region(c("84", "75"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_region = c("84", "75")) %>%
+#' dplyr::tibble(code_region = c("84", "75")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_region(code_region))
 #'
 #' @export
@@ -303,7 +303,7 @@ lib_region <- function(code_region) {
     message("Au moins un code région n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_region <- tibble::tibble(code_region) %>%
+  lib_region <- dplyr::tibble(code_region) %>%
     dplyr::left_join(geographie::region, by = "code_region") %>%
     dplyr::pull(lib_region)
 
@@ -325,7 +325,7 @@ lib_region <- function(code_region) {
 #' geographie::lib_region_2015(c("82", "72"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_region_2015 = c("82", "72")) %>%
+#' dplyr::tibble(code_region_2015 = c("82", "72")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_region_2015(code_region_2015))
 #'
 #' @export
@@ -345,7 +345,7 @@ lib_region_2015 <- function(code_region_2015) {
     message("Au moins un code région  (2015 et avant) n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_region_2015 <- tibble::tibble(code_region_2015) %>%
+  lib_region_2015 <- dplyr::tibble(code_region_2015) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_region_2015, lib_region_2015) %>% unique(),
                      by = "code_region_2015") %>%
     dplyr::pull(lib_region_2015)
@@ -368,7 +368,7 @@ lib_region_2015 <- function(code_region_2015) {
 #' geographie::lib_nationalite(c("100", "109"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' tibble::tibble(code_pays = c("100", "109")) %>%
+#' dplyr::tibble(code_pays = c("100", "109")) %>%
 #'   dplyr::mutate(libelle = geographie::lib_nationalite(code_pays))
 #'
 #' @export
@@ -390,7 +390,7 @@ lib_nationalite <- function(code_pays) {
 
   lib_nationalite <- dplyr::select(geographie::pays, code_pays, lib_nationalite) %>%
     tidyr::drop_na(code_pays) %>%
-    dplyr::left_join(tibble::tibble(code_pays), ., by = "code_pays") %>%
+    dplyr::left_join(dplyr::tibble(code_pays), ., by = "code_pays") %>%
     dplyr::pull(lib_nationalite)
 
   return(lib_nationalite)

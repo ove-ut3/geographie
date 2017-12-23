@@ -30,7 +30,7 @@ hier_commune_uu <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  hier_commune_uu <- tibble::tibble(code_commune) %>%
+  hier_commune_uu <- dplyr::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_uu), by = "code_commune") %>%
     dplyr::pull(code_uu)
 
@@ -68,7 +68,7 @@ hier_commune_departement <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_commune_departement <- tibble::tibble(code_commune) %>%
+  conv_commune_departement <- dplyr::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_departement), by = "code_commune") %>%
     dplyr::pull(code_departement)
 
@@ -106,7 +106,7 @@ hier_commune_region <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_commune_region <- tibble::tibble(code_commune) %>%
+  conv_commune_region <- dplyr::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region), by = "code_commune") %>%
     dplyr::pull(code_region)
 
@@ -144,7 +144,7 @@ hier_commune_region_2015 <- function(code_commune) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_commune_region_2015 <- tibble::tibble(code_commune) %>%
+  conv_commune_region_2015 <- dplyr::tibble(code_commune) %>%
     dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region_2015), by = "code_commune") %>%
     dplyr::pull(code_region_2015)
 
@@ -182,7 +182,7 @@ hier_departement_region <- function(code_departement) {
     message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  hier_departement_region <- tibble::tibble(code_departement) %>%
+  hier_departement_region <- dplyr::tibble(code_departement) %>%
     dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region), by = "code_departement") %>%
     dplyr::pull(code_region)
 
@@ -220,7 +220,7 @@ hier_departement_region_2015 <- function(code_departement) {
     message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  hier_departement_region_2015 <- tibble::tibble(code_departement) %>%
+  hier_departement_region_2015 <- dplyr::tibble(code_departement) %>%
     dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region_2015), by = "code_departement") %>%
     dplyr::pull(code_region_2015)
 
