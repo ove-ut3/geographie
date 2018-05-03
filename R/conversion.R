@@ -204,3 +204,40 @@ conv_pays_eu_insee <- function(code_pays_eu) {
 }
 
 # conv_pays_insee_eu
+
+#' Obtenir le code pays INSEE a partir de libelle de pays
+#'
+#' Obtenir le code pays INSEE à partir de libellés de pays.
+#'
+#' @param lib_pays Un vecteur de libellés de pays.
+#'
+#' Utilise less tables "Pays" et "Pays_libelle" de la base Access "Tables_ref.accdb".
+#'
+#' @return Un vecteur de code pays INSEE.
+#'
+#' @examples
+#' geographie::conv_lib_code_pays(c("france", "Etats-Unis"))
+#'
+#' @export
+conv_lib_code_pays <- function(lib_pays) {
+
+  conv_lib_code_pays <- dplyr::tibble(lib_pays = lib_pays) %>%
+    dplyr::mutate(lib_pays = tolower(lib_pays) %>%
+                    caractr::sans_accent() %>%
+                    caractr::sans_ponctuation() %>%
+                    stringr::str_replace_all("\\s+", " ")) %>%
+    dplyr::left_join(tidyr::drop_na(geographie::pays, code_pays) %>%
+                       dplyr::select(code_pays, lib_pays_fr, lib_pays_en) %>%
+                       tidyr::gather("champ", "libelle_pays", -code_pays, na.rm = TRUE) %>%
+                       dplyr::bind_rows(impexp::access_importer("Pays_libelle", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))) %>%
+                       dplyr::mutate(libelle_pays = tolower(libelle_pays) %>%
+                                       caractr::sans_accent() %>%
+                                       caractr::sans_ponctuation() %>%
+                                       stringr::str_replace_all("\\s+", " ")) %>%
+                       dplyr::select(lib_pays = libelle_pays, code_pays) %>%
+                       unique(),
+                     by = "lib_pays") %>%
+    dplyr::pull(code_pays)
+
+  return(conv_lib_code_pays)
+}
