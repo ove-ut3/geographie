@@ -3,6 +3,7 @@
 #' Obtenir le code commune à partir d'un code postal.
 #'
 #' @param code_postal Un vecteur de codes postaux de type caractère.
+#' @param bureau_distributeur Filtrer aux bureaux distributeurs uniquement.
 #'
 #' @return Un vecteur de code commune.\cr
 #' Seuls les codes communes non-doublonnés sont retournés.
@@ -15,7 +16,7 @@
 #' geographie::conv_cp_commune(c("01001", "01000"))
 #'
 #' @export
-conv_cp_commune <- function(code_postal) {
+conv_cp_commune <- function(code_postal, bureau_distributeur = FALSE) {
 
   if (class(code_postal) != "character") {
     stop("Le code postal doit être de type character", call. = FALSE)
@@ -26,7 +27,14 @@ conv_cp_commune <- function(code_postal) {
     message("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  conv_cp_commune <- dplyr::select(geographie::ptt, code_postal, code_commune) %>%
+  ptt <- geographie::ptt
+
+  if (bureau_distributeur == TRUE) {
+    ptt <- tidyr::drop_na(ptt, bureau_distributeur)
+  }
+
+  conv_cp_commune <- ptt %>%
+    dplyr::select(code_postal, code_commune) %>%
     dplyr::group_by(code_postal) %>%
     dplyr::filter(n() == 1) %>%
     dplyr::ungroup() %>%

@@ -4,10 +4,12 @@
 \alias{conv_cp_commune}
 \title{Obtenir le code commune a partir d'un code postal}
 \usage{
-conv_cp_commune(code_postal)
+conv_cp_commune(code_postal, bureau_distributeur = FALSE)
 }
 \arguments{
 \item{code_postal}{Un vecteur de codes postaux de type caractère.}
+
+\item{bureau_distributeur}{Filtrer aux bureaux distributeurs uniquement.}
 }
 \value{
 Un vecteur de code commune.\cr
