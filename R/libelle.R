@@ -28,7 +28,7 @@ lib_commune <- function(code_commune) {
     return(code_commune)
   }
 
-  test_longueur <- purrr::map_int(code_commune, nchar, keepNA = TRUE) == 5
+  test_longueur <- purrr::map_int(code_commune, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -70,7 +70,7 @@ lib_uu <- function(code_uu) {
     return(code_uu)
   }
 
-  test_longueur <- purrr::map_int(code_uu, nchar, keepNA = TRUE) == 5
+  test_longueur <- purrr::map_int(code_uu, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code d'unité urbaine n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -120,7 +120,7 @@ lib_pays <- function(code_pays, langue = "fr") {
     stop("La langue du libellé doit être \"fr\" ou \"en\"", call. = FALSE)
   }
 
-  test_longueur <- purrr::map_int(code_pays, nchar, keepNA = TRUE) == 3
+  test_longueur <- purrr::map_int(code_pays, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -172,7 +172,7 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
     stop("La langue du libellé doit être \"fr\" ou \"en\"", call. = FALSE)
   }
 
-  test_longueur <- purrr::map_int(code_pays_eu, nchar, keepNA = TRUE) == 2
+  test_longueur <- purrr::map_int(code_pays_eu, nchar) %in% c(2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code pays n'est pas de longueur 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -255,7 +255,7 @@ lib_departement <- function(code_departement) {
     return(code_departement)
   }
 
-  test_longueur <- purrr::map_int(code_departement, nchar, keepNA = TRUE) %in% c(2, 3)
+  test_longueur <- purrr::map_int(code_departement, nchar) %in% c(2, 3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code département n'est pas de longueur 2 ou 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -298,7 +298,7 @@ lib_region <- function(code_region) {
     return(code_region)
   }
 
-  test_longueur <- purrr::map_int(code_region, nchar, keepNA = TRUE) %in% c(1, 2)
+  test_longueur <- purrr::map_int(code_region, nchar) %in% c(1, 2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code région n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -340,7 +340,7 @@ lib_region_2015 <- function(code_region_2015) {
     return(code_region_2015)
   }
 
-  test_longueur <- purrr::map_int(code_region_2015, nchar, keepNA = TRUE) %in% c(1, 2)
+  test_longueur <- purrr::map_int(code_region_2015, nchar) %in% c(1, 2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code région  (2015 et avant) n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -383,7 +383,7 @@ lib_nationalite <- function(code_pays) {
     return(code_pays)
   }
 
-  test_longueur <- purrr::map_int(code_pays, nchar, keepNA = TRUE) == 3
+  test_longueur <- purrr::map_int(code_pays, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }

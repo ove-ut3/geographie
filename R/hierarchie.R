@@ -25,7 +25,7 @@ hier_commune_uu <- function(code_commune) {
     return(code_commune)
   }
 
-  test_longueur <- purrr::map_int(code_commune, nchar, keepNA = TRUE) == 5
+  test_longueur <- purrr::map_int(code_commune, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -63,7 +63,7 @@ hier_commune_departement <- function(code_commune) {
     return(code_commune)
   }
 
-  test_longueur <- purrr::map_int(code_commune, nchar, keepNA = TRUE) == 5
+  test_longueur <- purrr::map_int(code_commune, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -101,7 +101,7 @@ hier_commune_region <- function(code_commune) {
     return(code_commune)
   }
 
-  test_longueur <- purrr::map_int(code_commune, nchar, keepNA = TRUE) == 5
+  test_longueur <- purrr::map_int(code_commune, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -139,7 +139,7 @@ hier_commune_region_2015 <- function(code_commune) {
     return(code_commune)
   }
 
-  test_longueur <- purrr::map_int(code_commune, nchar, keepNA = TRUE) == 5
+  test_longueur <- purrr::map_int(code_commune, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -177,7 +177,7 @@ hier_departement_region <- function(code_departement) {
     return(code_departement)
   }
 
-  test_longueur <- purrr::map_int(code_departement, nchar, keepNA = TRUE) == 3
+  test_longueur <- purrr::map_int(code_departement, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
@@ -215,7 +215,7 @@ hier_departement_region_2015 <- function(code_departement) {
     return(code_departement)
   }
 
-  test_longueur <- purrr::map_int(code_departement, nchar, keepNA = TRUE) == 3
+  test_longueur <- purrr::map_int(code_departement, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
     message("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
