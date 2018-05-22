@@ -128,7 +128,7 @@ conv_commune_cp <- function(code_commune) {
     dplyr::filter(particularite_commune %in% c(NA, "*")) %>%
     dplyr::select(code_commune, code_postal) %>%
     dplyr::group_by(code_commune) %>%
-    dplyr::filter(row_number() == 1) %>%
+    dplyr::filter(dplyr::row_number() == 1) %>%
     dplyr::ungroup() %>%
     dplyr::left_join(dplyr::tibble(code_commune), ., by = "code_commune") %>%
     dplyr::pull(code_postal)

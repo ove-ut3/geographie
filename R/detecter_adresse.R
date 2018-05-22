@@ -19,7 +19,7 @@
 decouper_adresse_lignes <- function(adresse) {
 
   adresse_lignes <- dplyr::tibble(adresse_init = adresse) %>%
-    dplyr::mutate(cle = row_number(),
+    dplyr::mutate(cle = dplyr::row_number(),
           adresse = adresse_init) %>%
     tidyr::separate_rows(adresse, sep = "\n")
 
