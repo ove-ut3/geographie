@@ -21,7 +21,6 @@ hier_commune_uu <- function(code_commune) {
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
-    message("Tous les codes commune sont vides")
     return(code_commune)
   }
 
@@ -59,7 +58,6 @@ hier_commune_departement <- function(code_commune) {
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
-    message("Tous les codes commune sont vides")
     return(code_commune)
   }
 
@@ -97,7 +95,6 @@ hier_commune_region <- function(code_commune) {
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
-    message("Tous les codes commune sont vides")
     return(code_commune)
   }
 
@@ -135,7 +132,6 @@ hier_commune_region_2015 <- function(code_commune) {
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
-    message("Tous les codes commune sont vides")
     return(code_commune)
   }
 
@@ -173,7 +169,6 @@ hier_departement_region <- function(code_departement) {
   }
 
   if (which(!is.na(code_departement)) %>% length() == 0) {
-    message("Tous les codes département sont vides")
     return(code_departement)
   }
 
@@ -211,7 +206,6 @@ hier_departement_region_2015 <- function(code_departement) {
   }
 
   if (which(!is.na(code_departement)) %>% length() == 0) {
-    message("Tous les codes département sont vides")
     return(code_departement)
   }
 

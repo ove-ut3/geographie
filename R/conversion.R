@@ -115,7 +115,6 @@ conv_commune_cp <- function(code_commune) {
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
-    message("Tous les codes commune sont vides")
     return(code_commune)
   }
 
@@ -195,7 +194,6 @@ conv_pays_eu_insee <- function(code_pays_eu) {
   }
 
   if (which(!is.na(code_pays_eu)) %>% length() == 0) {
-    message("Tous les codes pays sont vides")
     return(code_pays_eu)
   }
 

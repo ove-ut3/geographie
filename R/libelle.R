@@ -24,7 +24,6 @@ lib_commune <- function(code_commune) {
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
-    message("Tous les codes commune sont vides")
     return(code_commune)
   }
 
@@ -66,7 +65,6 @@ lib_uu <- function(code_uu) {
   }
 
   if (which(!is.na(code_uu)) %>% length() == 0) {
-    message("Tous les codes d'unité urbaine sont vides")
     return(code_uu)
   }
 
@@ -112,7 +110,6 @@ lib_pays <- function(code_pays, langue = "fr") {
   }
 
   if (which(!is.na(code_pays)) %>% length() == 0) {
-    message("Tous les codes pays sont vides")
     return(code_pays)
   }
 
@@ -164,7 +161,6 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
   }
 
   if (which(!is.na(code_pays_eu)) %>% length() == 0) {
-    message("Tous les codes pays sont vides")
     return(code_pays_eu)
   }
 
@@ -214,7 +210,6 @@ lib_type_voie <- function(code_type_voie) {
   }
 
   if (which(!is.na(code_type_voie)) %>% length() == 0) {
-    message("Tous les codes de type de voie sont vides")
     return(code_type_voie)
   }
 
@@ -251,7 +246,6 @@ lib_departement <- function(code_departement) {
   }
 
   if (which(!is.na(code_departement)) %>% length() == 0) {
-    message("Tous les codes département sont vides")
     return(code_departement)
   }
 
@@ -294,7 +288,6 @@ lib_region <- function(code_region) {
   }
 
   if (which(!is.na(code_region)) %>% length() == 0) {
-    message("Tous les codes région sont vides")
     return(code_region)
   }
 
@@ -336,7 +329,6 @@ lib_region_2015 <- function(code_region_2015) {
   }
 
   if (which(!is.na(code_region_2015)) %>% length() == 0) {
-    message("Tous les codes région (2015 et avant) sont vides")
     return(code_region_2015)
   }
 
@@ -379,7 +371,6 @@ lib_nationalite <- function(code_pays) {
   }
 
   if (which(!is.na(code_pays)) %>% length() == 0) {
-    message("Tous les codes pays sont vides")
     return(code_pays)
   }
 
