@@ -4,7 +4,8 @@
 \alias{geocoder_adresse}
 \title{Obtenir le resultat des API (adresse.data.gouv.fr et google) a partir de l'adresse complete}
 \usage{
-geocoder_adresse(adresse, service, nettoyer_adresse = TRUE, timeout = 10)
+geocoder_adresse(adresse, service, nettoyer_adresse = TRUE,
+  timeout = 10)
 }
 \arguments{
 \item{adresse}{Un vecteur d'adresses.}
