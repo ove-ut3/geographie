@@ -80,7 +80,7 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
     message("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_commune <- caractr::sans_ponctuation(lib_commune) %>%
+  lib_commune <- caractr::str_remove_punct(lib_commune) %>%
     caractr::str_remove_accent() %>%
     toupper()
 
@@ -230,7 +230,7 @@ conv_lib_code_pays <- function(lib_pays) {
   conv_lib_code_pays <- dplyr::tibble(lib_pays = lib_pays) %>%
     dplyr::mutate(lib_pays = tolower(lib_pays) %>%
                     caractr::str_remove_accent() %>%
-                    caractr::sans_ponctuation() %>%
+                    caractr::str_remove_punct() %>%
                     stringr::str_replace_all("\\s+", " ")) %>%
     dplyr::left_join(tidyr::drop_na(geographie::pays, code_pays) %>%
                        dplyr::select(code_pays, lib_pays_fr, lib_pays_en) %>%
@@ -238,7 +238,7 @@ conv_lib_code_pays <- function(lib_pays) {
                        dplyr::bind_rows(impexp::access_importer("Pays_libelle", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))) %>%
                        dplyr::mutate(libelle_pays = tolower(libelle_pays) %>%
                                        caractr::str_remove_accent() %>%
-                                       caractr::sans_ponctuation() %>%
+                                       caractr::str_remove_punct() %>%
                                        stringr::str_replace_all("\\s+", " ")) %>%
                        dplyr::select(lib_pays = libelle_pays, code_pays) %>%
                        unique(),

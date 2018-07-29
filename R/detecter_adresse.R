@@ -117,7 +117,7 @@ localiser_adresse <- function(adresse, regex_adresse) {
     stop("Le second paramètre doit être de type character (expression régulière)", call. = FALSE)
   }
 
-  localisation <- caractr::sans_ponctuation(adresse) %>%
+  localisation <- caractr::str_remove_punct(adresse) %>%
     stringr::str_locate_all(regex_adresse) %>%
     purrr::map( ~ .[, 1]) %>%
     purrr::map_dbl( ~ ifelse(length(.) == 0, NA, tail(., 1)))
