@@ -54,10 +54,10 @@ decouper_adresse_lignes <- function(adresse) {
                            adresse_ligne_1 = ifelse(!is.na(adresse_ligne_2), adresse_ligne_2, adresse_ligne_1),
                            adresse_ligne_1 = dplyr::if_else(position_debut == 1, NA_character_, adresse_ligne_1, adresse_ligne_1),
 
-                           adresse_lignes = caractr::paste2(adresse_ligne_1, adresse_detectee_2, adresse_detectee_1, bp_cs, sep = "\n")
+                           adresse_lignes = caractr::str_paste(adresse_ligne_1, adresse_detectee_2, adresse_detectee_1, bp_cs, sep = "\n")
                            ) %>%
     dplyr::group_by(cle) %>%
-    dplyr::summarise(adresse_lignes = caractr::paste2(adresse_lignes, collapse = "\n")) %>%
+    dplyr::summarise(adresse_lignes = caractr::str_paste(adresse_lignes, collapse = "\n")) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(adresse_lignes = stringr::str_split(adresse_lignes, pattern = "\n")) %>%
     dplyr::pull(adresse_lignes)
