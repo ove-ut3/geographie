@@ -64,7 +64,7 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
 
     geocoder_init <- dplyr::mutate(geocoder_init,
                                    adresse_nettoyee = tolower(adresse) %>%
-                                     caractr::sans_accent() %>%
+                                     caractr::str_remove_accent() %>%
                                      stringr::str_replace_all("[[:punct:][:cntrl:]]", " ") %>%
                                      trimws() %>%
                                      stringr::str_replace_all("\\s+", " ")

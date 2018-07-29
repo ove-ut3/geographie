@@ -81,7 +81,7 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
   }
 
   lib_commune <- caractr::sans_ponctuation(lib_commune) %>%
-    caractr::sans_accent() %>%
+    caractr::str_remove_accent() %>%
     toupper()
 
   conv_cp_ville_commune <- dplyr::left_join(dplyr::tibble(code_postal, lib_commune),
@@ -229,7 +229,7 @@ conv_lib_code_pays <- function(lib_pays) {
 
   conv_lib_code_pays <- dplyr::tibble(lib_pays = lib_pays) %>%
     dplyr::mutate(lib_pays = tolower(lib_pays) %>%
-                    caractr::sans_accent() %>%
+                    caractr::str_remove_accent() %>%
                     caractr::sans_ponctuation() %>%
                     stringr::str_replace_all("\\s+", " ")) %>%
     dplyr::left_join(tidyr::drop_na(geographie::pays, code_pays) %>%
@@ -237,7 +237,7 @@ conv_lib_code_pays <- function(lib_pays) {
                        tidyr::gather("champ", "libelle_pays", -code_pays, na.rm = TRUE) %>%
                        dplyr::bind_rows(impexp::access_importer("Pays_libelle", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))) %>%
                        dplyr::mutate(libelle_pays = tolower(libelle_pays) %>%
-                                       caractr::sans_accent() %>%
+                                       caractr::str_remove_accent() %>%
                                        caractr::sans_ponctuation() %>%
                                        stringr::str_replace_all("\\s+", " ")) %>%
                        dplyr::select(lib_pays = libelle_pays, code_pays) %>%
