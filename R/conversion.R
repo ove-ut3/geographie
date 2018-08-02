@@ -235,7 +235,7 @@ conv_lib_code_pays <- function(lib_pays) {
     dplyr::left_join(tidyr::drop_na(geographie::pays, code_pays) %>%
                        dplyr::select(code_pays, lib_pays_fr, lib_pays_en) %>%
                        tidyr::gather("champ", "libelle_pays", -code_pays, na.rm = TRUE) %>%
-                       dplyr::bind_rows(impexp::access_importer("Pays_libelle", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))) %>%
+                       dplyr::bind_rows(impexp::access_import("Pays_libelle", paste0(find.package("geographie"), "/extdata/Tables_ref.accdb"))) %>%
                        dplyr::mutate(libelle_pays = tolower(libelle_pays) %>%
                                        caractr::str_remove_accent() %>%
                                        caractr::str_remove_punct() %>%

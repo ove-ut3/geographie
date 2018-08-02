@@ -4,7 +4,7 @@
 #' @keywords internal
 generer_data <- function() {
 
-  ptt <- impexp::access_importer("PTT", paste0(racine_packages, "geographie/raw/Tables_ref.accdb")) %>%
+  ptt <- impexp::access_import("PTT", paste0(find.package("geographie"), "/extdata/Tables_ref.accdb")) %>%
     dplyr::rename(code_commune = com_code)
   save("ptt", file = paste0(racine_packages, "geographie/data/ptt.RData"))
 
@@ -15,19 +15,19 @@ generer_data <- function() {
     dplyr::rename(code_commune = com_code, lib_commune = com_nom, code_uu = uu_code, lib_uu = uucr_nom, code_departement = dep_code, lib_departement = dep_nom, code_region = reg_code, lib_region = reg_nom, code_region_2015 = reg_code_old, lib_region_2015 = reg_nom_old)
   save("ods_geo", file = paste0(racine_packages, "geographie/data/ods_geo.RData"))
 
-  departement <- impexp::access_importer("Departement", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))
+  departement <- impexp::access_import("Departement", paste0(find.package("geographie"), "/extdata/Tables_ref.accdb"))
   save("departement", file = paste0(racine_packages, "geographie/data/departement.RData"))
 
-  region <- impexp::access_importer("Region", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))
+  region <- impexp::access_import("Region", paste0(find.package("geographie"), "/extdata/Tables_ref.accdb"))
   save("region", file = paste0(racine_packages, "geographie/data/region.RData"))
 
-  pays <- impexp::access_importer("Pays", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))
+  pays <- impexp::access_import("Pays", paste0(find.package("geographie"), "/extdata/Tables_ref.accdb"))
   save("pays", file = paste0(racine_packages, "geographie/data/pays.RData"))
 
-  type_voie <- impexp::access_importer("Adresse_voie_type", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))
+  type_voie <- impexp::access_import("Adresse_voie_type", paste0(find.package("geographie"), "/extdata/Tables_ref.accdb"))
   save("type_voie", file = paste0(racine_packages, "geographie/data/type_voie.RData"))
 
-  adresse_voie_prx <- impexp::access_importer("Adresse_voie_prx", paste0(racine_packages, "geographie/raw/Tables_ref.accdb"))
+  adresse_voie_prx <- impexp::access_import("Adresse_voie_prx", paste0(find.package("geographie"), "/extdata/Tables_ref.accdb"))
   save("adresse_voie_prx", file = paste0(racine_packages, "geographie/data/adresse_voie_prx.RData"))
 
   cp_ville_commune <- dplyr::select(ptt, code_postal, lib_commune1 = nom_localite, code_commune) %>%
