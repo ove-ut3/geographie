@@ -134,9 +134,9 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
                   )
 
   geocodage <- pbapply::pblapply(geocoder$appel_api %>% unique(),
-                          purrr::safely(webr::telecharger_url),
+                          purrr::safely(webr::download_url),
                           timeout = timeout,
-                          format_api = "json")
+                          api_format = "json")
 
   geocoder <- dplyr::tibble(appel_api = geocoder$appel_api %>% unique(),
                                 resultat = purrr::map(geocodage, "result"),
@@ -221,7 +221,7 @@ geocoder_adresse_google <- function(adresse, timeout = 10) {
     )
 
   # Test dépassement quota
-  test_quota <- webr::telecharger_url(geocoder$appel_api[1], format_api = "json") %>%
+  test_quota <- webr::download_url(geocoder$appel_api[1], api_format = "json") %>%
     dplyr::pull(status)
 
   if (test_quota == "OVER_QUERY_LIMIT") {
@@ -233,9 +233,9 @@ geocoder_adresse_google <- function(adresse, timeout = 10) {
   }
 
   geocodage <- pbapply::pblapply(geocoder$appel_api %>% unique(),
-                                 purrr::safely(webr::telecharger_url),
+                                 purrr::safely(webr::download_url),
                                  timeout = timeout,
-                                 format_api = "json")
+                                 api_format = "json")
 
   geocoder <- dplyr::tibble(appel_api = geocoder$appel_api %>% unique(),
                              resultat = purrr::map(geocodage, "result"),
