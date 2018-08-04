@@ -3,7 +3,7 @@ Title: Fonctions autour du referentiel geographique
 Version: 0.1
 Authors@R: person("Stéphane Le Hénanff", "Stéphane Le Hénanff", email = "github@le-henanff.fr", role = c("aut", "cre"))
 Description: Fonctions autour du referentiel geographique : extraction d'adresse, geocodage, conversions entre niveaux geographiques et libelles.
-  Les donnees sont generees a partir de la fonction "package_geographie()" du projet "Géographie".
+    Les donnees sont generees a partir de la fonction "package_geographie()" du projet "Géographie".
 Depends:
     R (>= 3.2.5)
 License: Etalab
@@ -11,9 +11,9 @@ Encoding: UTF-8
 LazyData: true
 Imports:
 	caractr,
-	divr,
-  dplyr,
+	dplyr,
   impexp,
+  patchr,
   pbapply,
   purrr,
   readr,
