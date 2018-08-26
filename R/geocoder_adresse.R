@@ -114,17 +114,6 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
 
 }
 
-#' Geocoder des adresses a partir de l'API adresse.data.gouv.fr
-#'
-#' Géocoder des adresses à partir de l'API adresse.data.gouv.fr.
-#'
-#' @param adresse Un vecteur d'adresses.
-#' @param nettoyer_adresse \code{TRUE}, l'adresse est nettoyée (minuscule, sans accent et ponctuation); \code{FALSE}, aucune opération n'est réalisée.
-#' @param timeout Temps de réponse maximal en secondes.
-#'
-#' @return A matrix of the infile
-#'
-#' @export
 #' @keywords internal
 geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
 
@@ -202,16 +191,6 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
   return(geocoder)
 }
 
-#' Geocoder des adresses a partir de l'API google
-#'
-#' Géocoder des adresses à partir de l'API google.
-#'
-#' @param adresse Un vecteur d'adresses.
-#' @param timeout Temps de réponse maximal en secondes.
-#'
-#' @return A matrix of the infile
-#'
-#' @export
 #' @keywords internal
 geocoder_adresse_google <- function(adresse, timeout = 10) {
 

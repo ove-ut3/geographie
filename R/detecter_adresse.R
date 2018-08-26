@@ -69,13 +69,6 @@ decouper_adresse_lignes <- function(adresse) {
 #'
 #' Extraire d'une adresse la boite postale et/ou la course spéciale (CS).
 #'
-#' @param adresse Un vecteur d'adresses.
-#'
-#' @return Un data frame (nombre de lignes équivalent à la taille de \code{adresse}).\cr
-#' Le champ \code{bp_cs} contient la BP/CS si celle-ci a été détectée.\cr
-#' Le champ \code{sans_bp_cs} contient l'adresse originale, sans la BP/CS si celle-ci a été détectée.
-#'
-#' @export
 #' @keywords internal
 extraire_bp_cs <- function(adresse) {
 
@@ -96,16 +89,6 @@ extraire_bp_cs <- function(adresse) {
   return(extraction_bp_cs)
 }
 
-#' Localiser une adresse dans une chaine de caracteres
-#'
-#' Localiser une adresse dans une chaine de caractères.
-#'
-#' @param adresse Un vecteur d'adresses.
-#' @param regex_adresse Une expression régulière.
-#'
-#' @return Un vecteur numérique contenant la position de départ de l'adresse.
-#'
-#' @export
 #' @keywords internal
 localiser_adresse <- function(adresse, regex_adresse) {
 

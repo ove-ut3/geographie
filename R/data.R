@@ -1,6 +1,3 @@
-#' generer_data
-#'
-#' @export
 #' @keywords internal
 generer_data <- function() {
 

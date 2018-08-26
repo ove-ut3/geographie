@@ -6,14 +6,6 @@
 \usage{
 extraire_bp_cs(adresse)
 }
-\arguments{
-\item{adresse}{Un vecteur d'adresses.}
-}
-\value{
-Un data frame (nombre de lignes équivalent à la taille de \code{adresse}).\cr
-Le champ \code{bp_cs} contient la BP/CS si celle-ci a été détectée.\cr
-Le champ \code{sans_bp_cs} contient l'adresse originale, sans la BP/CS si celle-ci a été détectée.
-}
 \description{
 Extraire d'une adresse la boite postale et/ou la course spéciale (CS).
 }
