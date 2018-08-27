@@ -23,7 +23,7 @@ decouper_adresse_lignes <- function(adresse) {
           adresse = adresse_init) %>%
     tidyr::separate_rows(adresse, sep = "\n")
 
-  adresse_lignes <- dplyr::bind_cols(adresse_lignes, geographie::extraire_bp_cs(adresse_lignes$adresse)) %>%
+  adresse_lignes <- dplyr::bind_cols(adresse_lignes, extraire_bp_cs(adresse_lignes$adresse)) %>%
     dplyr::select(cle, adresse = sans_bp_cs, bp_cs)
 
   regex_adresse <- dplyr::filter(geographie::adresse_voie_prx, !(lib_voie %in% c("b[aâ]t(iment)?", "mail", "moulin")))
@@ -42,12 +42,12 @@ decouper_adresse_lignes <- function(adresse) {
 
   adresse_lignes <- dplyr::mutate(adresse_lignes,
 
-                           position_debut = geographie::localiser_adresse(adresse, regex_adresse_1),
+                           position_debut = localiser_adresse(adresse, regex_adresse_1),
                            adresse_ligne_1 = ifelse(position_debut >= 2, substring(adresse, 1, position_debut - 1), NA_character_),
                            adresse_detectee_1 = ifelse(!is.na(position_debut), substring(adresse, position_debut), NA_character_),
                            adresse_ligne_1 = ifelse(is.na(position_debut), adresse, adresse_ligne_1),
 
-                           position_debut = geographie::localiser_adresse(adresse_ligne_1, regex_adresse_2),
+                           position_debut = localiser_adresse(adresse_ligne_1, regex_adresse_2),
                            adresse_detectee_2 = ifelse(!is.na(position_debut), substring(adresse_ligne_1, position_debut), NA_character_),
                            adresse_ligne_2 = ifelse(position_debut >= 2, substring(adresse_ligne_1, 1, position_debut - 1), NA_character_),
 
@@ -65,10 +65,6 @@ decouper_adresse_lignes <- function(adresse) {
   return(adresse_lignes)
 }
 
-#' Extraire d'une adresse la boite postale et/ou la course speciale (CS)
-#'
-#' Extraire d'une adresse la boite postale et/ou la course spéciale (CS).
-#'
 #' @keywords internal
 extraire_bp_cs <- function(adresse) {
 
