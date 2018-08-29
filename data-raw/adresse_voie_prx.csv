@@ -1,0 +1,61 @@
+lib_voie
+(grande )?voie
+(rue du )?faubourg
+(rue du )?fg
+all
+all[eé]es?
+ave?(nue)?
+b[aâ]t(iment)?
+bl
+bl?v?d
+boulevard
+c(ou)?rs
+campus
+car(refour)?
+chauss[ée]e
+che(min)?
+chs
+cit[eé]
+cor(niche)?
+dom(aine)?
+esp(lanade)?
+gr
+grande? rue
+ham(eau)
+ile
+im(passe)?
+ld
+lieu dit
+lot(issement)?
+mail
+mont[eé]e
+moulin
+mte
+parc
+parvis
+pas(sage)?
+pl(ace)?
+placette
+plaine
+plateau
+pln
+plt
+pro(menade)?
+prv
+qu(ai)?
+quartier
+r[eé]sidence
+rambla
+rle
+roc(ade)?
+ront point
+route
+rpt
+rte
+rue(lle)?
+sen(tier)?
+sq(uare)?
+tra(verse)?
+v(il)?la
+village
+vlge

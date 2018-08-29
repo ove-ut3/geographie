@@ -1,0 +1,42 @@
+code_region;lib_region;ajout_rd;latitude_region;longitude_region
+00;TOM + Collectivités territoriales;;;
+01;Guadeloupe;;16,261774;-61,560559
+02;Martinique;;14,638664;-60,985478
+03;Guyane;;3,941459;-53,186451
+04;La Réunion;;-21,133571;55,551885
+06;Mayotte;;-12,831664;45,158413
+07;Régions d'outre-mer;O;;
+08;Régions d'outre-mer non ventilées;O;;
+11;Île-de-France;;48,860455;2,34054
+21;Champagne-Ardenne;;48,856603;4,36818
+22;Picardie;;49,609777;3,004438
+23;Haute-Normandie;;49,318263;1,068926
+24;Centre-Val de Loire;;47,556923;1,727903
+25;Basse-Normandie;;48,864465;-0,200819
+26;Bourgogne;;47,283655;4,181829
+27;Bourgogne-Franche-Comté;;47,238109;4,794745
+28;Normandie;;49,124736;0,077154
+31;Nord-Pas-de-Calais;;50,412776;2,882655
+32;Hauts-de-France;;49,955897;2,794835
+41;Lorraine;;48,830025;6,077444
+42;Alsace;;48,408841;7,476863
+43;Franche-Comté;;47,210569;6,153403
+44;Grand-Est;;48,678873;5,585661
+52;Pays de la Loire;;47,552757;-0,667674
+53;Bretagne;;48,128808;-2,795505
+54;Poitou-Charentes;;46,195145;0,034021
+72;Aquitaine;;44,650061;-0,084149
+73;Midi-Pyrénées;;43,735705;1,441448
+74;Limousin;;45,784641;1,804293
+75;Nouvelle-Aquitaine;;45,186267;0,179721
+76;Occitanie;;43,70328;2,092038
+82;Rhône-Alpes;;45,327379;5,508651
+83;Auvergne;;45,60445;3,21642
+84;Auvergne-Rhône-Alpes;;45,521867;4,513197
+91;Languedoc-Roussillon;;43,445369;3,404324
+93;Provence-Alpes-Côte d'Azur;;43,993214;6,282217
+94;Corse;;42,10236;9,127029
+95;Provence-Alpes-Côte d'Azur + Corse;O;;
+97;Corse + Régions d'outre-mer;O;;
+98;Non ventilé;O;;
+99;Étranger;;;

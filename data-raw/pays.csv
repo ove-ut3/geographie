@@ -1,0 +1,255 @@
+code_pays;lib_pays_fr;lib_pays_en;code_langue;code_pays_iso2;code_pays_iso3;article_pays;lib_nationalite
+;Îles Turques-et-Caïques;Turks and Caicos Islands;;TC;;les;
+;Saint-Martin (Partie Française);Saint Martin (French part);;MF;;;
+;Îles Mariannes du Nord;Northern Mariana Islands;;MP;;les;
+;Montserrat;Montserrat;;MS;;le;
+;Nouvelle-Calédonie;New Caledonia;;NC;;la;
+;Norfolk;Norfolk Island;;NF;;;
+;Niué;Niue;;NU;;;
+;Saint-Pierre-et-Miquelon;Saint Pierre and Miquelon;;PM;;;
+;American Pacific Isles;American Pacific Isles;;PU;;;
+;Îles Caïmans;Cayman Islands;;KY;;les;
+;Svalbard et île Jan Mayen;Svalbard and Jan Mayen;;SJ;;;
+;Polynésie française;French Polynesia;;PF;;la;
+;Terres australes et antarctiques françaises;French Southern Territories;;TF;;les;
+;Tokelau;Tokelau;;TK;;le;
+;Îles mineures éloignées des Etats-Unis;United States Minor Outlying Islands;;UM;;les;
+;Îles Vierges britanniques;Virgin Islands (British);;VG;;les;
+;Îles Vierges américaines;Virgin Islands (US);;VI;;les;
+;Ceuta;Ceuta;;XC;;;
+;Melilla;Melilla;;XL;;;
+;Mayotte;Mayotte;;YT;;;
+;Antarctique;Antarctica;;AQ;;l';
+;Sainte-Hélène;Saint Helena;;SH;;;
+;Bermudes;Bermuda;;BM;;les;
+;Samoa américaines;American Samoa;;AS;;les;
+;Aruba;Aruba;;AW;;l';
+;Pitcairn;Pitcairn;;PN;;;
+;Saint Barthélemy;Saint Barthélemy;;BL;;;
+;Jersey;Jersey;;JE;;;
+;Île Bouvet;Bouvet Island;;BV;;l';
+;Îles Cocos;Cocos Islands (or Keeling Islands);;CC;;l';
+;Îles Cook;Cook Islands;;CK;;les;
+;Clipperton;Clipperton;;CP;;;
+;Île Christmas;Christmas Island;;CX;;l';
+;Union Européenne (JRC);European Union (JRC);;EU;;l';
+;Îles Féroé;Faroe Islands;;FO;;les;
+;Îles d'Aland;Åland islands;;AX;;les;
+;Guernsey;Guernsey;;GG;;;
+;Groenland;Greenland;;GL;;le;
+;Géorgie du Sud et les îles Sandwich du Sud;South Georgia and South Sandwich Islands;;GS;;la;
+;Guam;Guam;;GU;;;
+;Île Heard et îles McDonald;Heard Island and Mc Donald Islands;;HM;;l';
+;Île de Man;Isle of Man;;IM;;l';
+;Territoire britannique de l'océan Indien;British Indian Ocean Territory;;IO;;le;
+;Îles Malouines;Falkland Islands (Malvinas);;FK;;les;
+100;France;France;fr;FR;FRA;la;Française
+101;Danemark;Denmark;da;DK;DNK;le;Danoise
+102;Islande;Iceland;is;IS;ISL;l';Islandaise
+103;Norvège;Norway;no;NO;NOR;la;Norvégienne
+104;Suède;Sweden;sv;SE;SWE;la;Suédoise
+105;Finlande;Finland;fi;FI;FIN;la;Finlandaise
+106;Estonie;Estonia;et;EE;EST;l';Estonienne
+107;Lettonie;Latvia;lv;LV;LVA;la;Lettonienne
+108;Lituanie;Lithuania;lt;LT;LTU;la;Lithuanienne
+109;Allemagne;Germany;de;DE;DEU;l';Allemande
+110;Autriche;Austria;de;AT;AUT;l';Autrichienne
+111;Bulgarie;Bulgaria;bg;BG;BGR;la;Bulgare
+112;Hongrie;Hungary;hu;HU;HUN;la;Hongroise
+113;Liechtenstein;Liechtenstein;de;LI;LIE;le;
+114;Roumanie;Romania;ro;RO;ROU;la;Roumaine
+116;Rép. Tchèque;Czech Republic;cs;CZ;CZE;la;Tchèque
+117;Slovaquie;Slovakia;sk;SK;SVK;la;Slovaque
+118;Bosnie-Herzégovine;Bosnia and Herzegovina;bs;BA;BIH;la;Bosniaque
+119;Croatie;Croatia;hr;HR;HRV;la;Croate
+120;Monténégro;Montenegro;sr-ME;ME;MNE;le;Monténégro
+121;Serbie;Serbia;sr;RS;SRB;la;Serbe
+122;Pologne;Poland;pl;PL;POL;la;Polonaise
+123;Russie;Russian Federation;ru;RU;RUS;la;Russe
+125;Albanie;Albania;sq;AL;ALB;l';Albanaise
+126;Grèce;Greece;el;EL;GRC;la;Grecque
+127;Italie;Italy;it;IT;ITA;l';Italienne
+128;Saint-Marin;San Marino;it;SM;SMR;;Saint Marin
+129;Vatican;;;VA;;le;Vaticane
+130;Andorre;Andorra;ca;AD;AND;;Andorranne
+131;Belgique;Belgium;"nl;fr;de";BE;BEL;la;Belge
+132;Royaume-Uni;United Kingdom;en;UK;GBR;le;Britannique
+133;Gibraltar;Gibraltar;en;GI;GIB;;
+134;Espagne;Spain;es;ES;ESP;l';Espagnole
+135;Pays-Bas;Netherlands;nl;NL;NLD;les;Néerlandaise
+136;Irlande;Ireland;en;IE;IRL;l';Irlandaise
+137;Luxembourg;Luxembourg;"lb;fr;de";LU;LUX;le;Luxembourgeoise
+138;Monaco;Monaco;fr;MC;MCO;;Monégasque
+139;Portugal;Portugal;pt;PT;PRT;le;Portugaise
+140;Suisse;Switzerland;"fr;de";CH;CHE;la;Suisse
+144;Malte;Malta;en;MT;MLT;;Maltaise
+145;Slovénie;Slovenia;sl;SI;SVN;la;Slovène
+148;Biélorussie;Belarus;"be;ru";BY;BLR;la;Biélorusse
+151;Moldavie;Republic of Moldova;ro;MD;MDA;la;Moldave
+155;Ukraine;Ukraine;uk;UA;UKR;l';Ukrainienne
+156;Macédoine;The former Yugoslav Republic of Macedonia;mk;MK;MKD;la;Macédonienne
+157;Kosovo;Kosovo;"sq;sr";XK;;le;Kosovo
+201;Arabie saoudite;Saudi Arabia;ar;SA;SAU;l';Saoudienne
+203;Irak;Iraq;"ar;ku";IQ;IRQ;l';Irakienne
+204;Iran;Iran (Islamic Republic of);fa;IR;IRN;l';Iranienne
+205;Liban;Lebanon;"ar;fr";LB;LBN;le;Libanaise
+206;Syrie;Syrian Arab Republic;ar;SY;SYR;la;Syrienne
+207;Israël;Israel;"iw;ar";IL;ISR;;Israélienne
+208;Turquie;Turkey;tr;TR;TUR;la;Turque
+212;Afghanistan;Afghanistan;"fa;ps";AF;AFG;l';Afghane
+213;Pakistan;Pakistan;;PK;PAK;le;Pakistanaise
+214;Bhoutan;Bhutan;;BT;BTN;le;
+215;Népal;Nepal;;NP;NPL;le;Népalaise
+216;Chine;China;;CN;CHN;la;Chinoise
+217;Japon;Japan;;JP;JPN;le;Japonaise
+219;Thaïlande;Thailand;;TH;THA;la;Thaïlandaise
+220;Philippines;Philippines;;PH;PHL;les;Philippinne
+222;Jordanie;Jordan;;JO;JOR;la;Jordanienne
+223;Inde;India;;IN;IND;l';Indienne
+224;Birmanie;Myanmar;;MM;MMR;la;Birmane
+225;Brunei;Brunei Darussalam;;BN;BRN;;Brunei
+226;Singapour;Singapore;;SG;SGP;;Singapourienne
+227;Malaisie;Malaysia;;MY;MYS;la;Malaise
+229;Maldives;Maldives;;MV;MDV;les;
+230;Hong Kong;Hong Kong;;HK;;;
+231;Indonésie;Indonesia;;ID;IDN;l';Indonésienne
+232;Macao;;;MO;;;
+234;Cambodge;Cambodia;;KH;KHM;le;Cambodgienne
+235;Sri Lanka;Sri Lanka;;LK;LKA;le;Sri Lankaise
+236;Taïwan;Taïwan;;TW;;;Taïwanaise
+238;Corée du Nord;Democratic People's Republic of Korea;;KP;PRK;la;Nord Coréenne
+239;Corée du Sud;Republic of Korea;;KR;KOR;la;Sud Coréenne
+240;Koweït;Kuwait;;KW;KWT;le;Koweïtienne
+241;Laos;Lao People's Democratic Republic;;LA;LAO;le;Laotienne
+242;Mongolie;Mongolia;;MN;MNG;la;Mongole
+243;Viêt Nam;Viet Nam;vi;VN;VNM;le;Viêtnamienne
+246;Bangladesh;Bangladesh;;BD;BGD;le;Bengalie
+247;Émirats arabes unis;United Arab Emirates;;AE;ARE;les;Émirats Arabes Unis
+248;Qatar;Qatar;;QA;QAT;le;Qatarie
+249;Bahreïn;Bahrain;;BH;BHR;le;
+250;Oman;Oman;;OM;OMN;;Omanaise
+251;Yémen;Yemen;;YE;YEM;le;Yéménite
+252;Arménie;Armenia;;AM;ARM;l';Arméniene
+253;Azerbaïdjan;Azerbaijan;;AZ;AZE;l';Azérie
+254;Chypre;Cyprus;;CY;CYP;;Chypriote
+255;Géorgie;Georgia;;GE;GEO;la;Géorgienne
+256;Kazakhstan;Kazakhstan;;KZ;KAZ;le;Kazakh
+257;Kirghizistan;Kyrgyzstan;;KG;KGZ;le;Kirghizistanaise
+258;Ouzbékistan;Uzbekistan;;UZ;UZB;l';Ouzbek
+259;Tadjikistan;Tajikistan;;TJ;TJK;le;Tadjik
+260;Turkménistan;Turkmenistan;;TM;TKM;le;Turkmène
+261;Palestine;State of Palestine;;PS;PSE;la;Palestinienne
+262;Timor oriental;Timor-Leste;;TL;TLS;le;
+301;Égypte;Egypt;;EG;EGY;l';Égyptienne
+302;Libéria;Liberia;;LR;LBR;le;
+303;Afrique du Sud;South Africa;;ZA;ZAF;l';Sud Africaine
+304;Gambie;Gambia;;GM;GMB;la;
+309;Tanzanie;United Republic of Tanzania;;TZ;TZA;la;Tanzanienne
+310;Zimbabwe;Zimbabwe;;ZW;ZWE;le;Zimbabweienne
+311;Namibie;Namibia;;NA;NAM;la;Namibienne
+312;Rép. démocratique du Congo;Democratic Republic of the Congo;fr;CD;COD;la;Congolaise
+314;Guinée équatoriale;Equatorial Guinea;;GQ;GNQ;la;Guineenne Equatori
+315;Éthiopie;Ethiopia;;ET;ETH;l';Éthiopienne
+316;Libye;Libya;;LY;LBY;la;Libyenne
+317;Érythrée;Eritrea;;ER;ERI;l';Érythréenne
+318;Somalie;Somalia;;SO;SOM;la;Somalienne
+321;Burundi;Burundi;;BI;BDI;le;Burundaise
+322;Cameroun;Cameroon;"fr;en";CM;CMR;le;Camerounaise
+323;Centrafrique;Central African Republic;fr;CF;CAF;le;Centrafricaine
+324;Congo;Congo;fr;CG;COG;le;Congolaise
+326;Côte d'Ivoire;Côte d'Ivoire;fr;CI;CIV;la;Ivoirienne
+327;Bénin;Benin;fr;BJ;BEN;le;Beninoise
+328;Gabon;Gabon;fr;GA;GAB;le;Gabonaise
+329;Ghana;Ghana;en;GH;GHA;le;Ghanéenne
+330;Guinée;Guinea;fr;GN;GIN;la;Guinéenne
+331;Burkina Faso;Burkina Faso;fr;BF;BFA;le;Burkinabé
+332;Kenya;Kenya;;KE;KEN;le;Kenyanne
+333;Madagascar;Madagascar;"mg;fr";MG;MDG;;Malgache
+334;Malawi;Malawi;;MW;MWI;le;Malawienne
+335;Mali;Mali;fr;ML;MLI;le;Malienne
+336;Mauritanie;Mauritania;;MR;MRT;la;Mauritanienne
+337;Niger;Niger;fr;NE;NER;le;Nigérienne
+338;Nigeria;Nigeria;;NG;NGA;le;Nigériane
+339;Ouganda;Uganda;;UG;UGA;l';Ougandaise
+340;Rwanda;Rwanda;;RW;RWA;le;Ruandaise
+341;Sénégal;Senegal;fr;SN;SEN;le;Sénégalaise
+342;Sierra Leone;Sierra Leone;;SL;SLE;le;Sierra Leone
+343;Soudan;Sudan;;SD;SDN;le;Soudanaise
+344;Tchad;Chad;"ar;fr";TD;TCD;le;Tchadienne
+345;Togo;Togo;fr;TG;TGO;le;Togolaise
+346;Zambie;Zambia;;ZM;ZMB;la;Zambienne
+347;Botswana;Botswana;;BW;BWA;le;Botswanaise
+348;Lesotho;Lesotho;;LS;LSO;le;Lesotho
+349;Soudan du Sud;South Sudan;;SS;;;
+350;Maroc;Morocco;"ar;fr";MA;MAR;le;Marocaine
+351;Tunisie;Tunisia;"ar;fr";TN;TUN;la;Tunisienne
+352;Algérie;Algeria;"ar;fr";DZ;DZA;l';Algérienne
+389;Sahara occidental;Western Sahara;;EH;ESH;le;
+390;Maurice;;"en;fr";MU;;;Mauricienne
+391;Swaziland;Swaziland;;SZ;SWZ;le;Swazilandaise
+392;Guinée-Bissau;Guinea-Bissau;;GW;GNB;la;Guinéenne Bissau
+393;Mozambique;Mozambique;;MZ;MOZ;le;Mozambiquoise
+394;Sao Tomé-et-Principe;Sao Tome and Principe;;ST;STP;;Sao Tomé-et-Principe
+395;Angola;Angola;;AO;AGO;l';Angolaise
+396;Cap-Vert;Cabo Verde;;CV;CPV;le;Cap-Verdienne
+397;Comores;Comoros;;KM;COM;les;Comorienne
+398;Seychelles;Seychelles;;SC;SYC;les;Seychelles
+399;Djibouti;Djibouti;;DJ;DJI;;Djiboutienne
+401;Canada;Canada;"en;fr";CA;CAN;le;Canadienne
+404;États-Unis;United States of America;;US;USA;les;Américaine
+405;Mexique;Mexico;es;MX;MEX;le;Mexicaine
+406;Costa Rica;Costa Rica;es;CR;CRI;le;Costa Ricaine
+407;Cuba;Cuba;es;CU;CUB;;Cubaine
+408;Rép. Dominicaine;Dominican Republic;;DO;DOM;la;Dominicaine
+409;Guatemala;Guatemala;;GT;GTM;le;Guatémaltèque
+410;Haïti;Haiti;;HT;HTI;;Haïtienne
+411;Honduras;Honduras;;HN;HND;le;Hondurienne
+412;Nicaragua;Nicaragua;;NI;NIC;le;Nicaraguaise
+413;Panamá;Panama;;PA;PAN;le;Panaméenne
+414;Salvador;El Salvador;;SV;SLV;le;El Salvadorienne
+415;Argentine;Argentina;es;AR;ARG;l';Argentine
+416;Brésil;Brazil;pt;BR;BRA;le;Brésilienne
+417;Chili;Chile;es;CL;CHL;le;Chilienne
+418;Bolivie;Bolivia;;BO;BOL;la;Bolivienne
+419;Colombie;Colombia;es;CO;COL;la;Colombienne
+420;Équateur;Ecuador;es;EC;ECU;l';Équatorienne
+421;Paraguay;Paraguay;;PY;PRY;le;Paraguayenne
+422;Pérou;Peru;es;PE;PER;le;Péruvienne
+423;Uruguay;Uruguay;;UY;URY;l';Uruguayenne
+424;Venezuela;Venezuela;es;VE;VEN;le;Vénézuélienne
+426;Jamaïque;Jamaica;;JM;JAM;la;Jamaïcaine
+428;Guyana;Guyana;;GY;GUY;la;Guyanaise
+429;Belize;Belize;;BZ;BLZ;le;
+432;Porto Rico;Puerto Rico;;PR;;;
+433;Trinité-et-Tobago;Trinidad and Tobago;;TT;TTO;;
+434;Barbade;Barbados;;BB;BRB;la;
+435;Grenade;Grenada;;GD;GRD;;Grenade
+436;Bahamas;Bahamas;;BS;BHS;les;Bahamas
+437;Suriname;Suriname;;SR;SUR;le;Surinamaise
+438;Dominique;Dominica;;DM;DMA;la;Dominicaine
+439;Sainte-Lucie;;;LC;;;Sainte-Luciene
+440;Saint-Vincent-et-les Grenadines;;;VC;;;
+441;Antigua-et-Barbuda;Antigua and Barbuda;;AG;ATG;l';
+442;Saint-Christophe-et-Niévès;;;KN;;;Saint-Christophe-et-Niévès
+443;Bonaire, Saint-Eustache et Saba;;;BQ;;;
+444;Curacao;;;CW;;;
+445;Saint-Martin (Partie Néerlandaise);;;SX;;;
+501;Australie;Australia;;AU;AUS;l';Australienne
+502;Nouvelle-Zélande;New Zealand;;NZ;NZL;la;Neo-Zélandaise
+506;Samoa;Samoa;;WS;WSM;les;
+507;Nauru;Nauru;;NR;NRU;;Nauru
+508;Fidji;Fiji;;FJ;FJI;;Fidji
+509;Tonga;Tonga;;TO;TON;le;Tonga
+510;Papouasie-Nouv.-Guinée;Papua New Guinea;;PG;PNG;la;
+511;Tuvalu;Tuvalu;;TV;TUV;le;Tuvalu
+512;Salomon;;;SB;;les;Salomon
+513;Kiribati;Kiribati;;KI;KIR;la;
+514;Vanuatu;Vanuatu;;VU;VUT;le;Vanuatu
+515;Marshall;;;MH;;;
+516;Micronésie;;;FM;;la;
+517;Palaos;Palau;;PW;PLW;le;
+971;Guadeloupe;;;GP;;la;
+972;Martinique;;;MQ;;la;
+973;Guyane;;;GF;;la;
+974;Réunion;;;RE;;la;
+984;Antarctique;Antarctica;;AI;ATA;l';
