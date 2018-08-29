@@ -13,11 +13,9 @@ Imports:
 	caractr,
 	dplyr,
   impexp,
-  patchr,
   pbapply,
   purrr,
-  readr,
-	stringr,
+  stringr,
 	tidyr,
 	webr
 RoxygenNote: 6.1.0
