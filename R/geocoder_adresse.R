@@ -73,8 +73,8 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
   } else geocoder_init = dplyr::mutate(geocoder_init, adresse_nettoyee = adresse)
 
   if (service == "adresse.data.gouv.fr") {
-    base_geocodage <- impexp::rdata_import("data/geocodage_data_gouv.RData")
-  } else if (service == "googlemaps") base_geocodage <- impexp::rdata_import("data/geocodage_google.RData")
+    base_geocodage <- impexp::r_import("data/geocodage_data_gouv.RData")
+  } else if (service == "googlemaps") base_geocodage <- impexp::r_import("data/geocodage_google.RData")
 
   geocoder_ajout <- dplyr::anti_join(geocoder_init, base_geocodage, by = c("adresse_nettoyee" = "adresse"))
 

@@ -101,7 +101,7 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
 
   geocodage_data_gouv <- dplyr::filter(geocoder, purrr::map_lgl(erreur, is.null)) %>%
     dplyr::select(-erreur) %>%
-    dplyr::bind_rows(impexp::rdata_import("data/geocodage_data_gouv.RData")) %>%
+    dplyr::bind_rows(impexp::r_import("data/geocodage_data_gouv.RData")) %>%
     dplyr::arrange(adresse)
 
   message("Sauvegarde package \"geographie\": ", nrow(data_geocodage_data_gouv), " adresses au total")
@@ -125,7 +125,7 @@ geocoder_adresse_google <- function(adresse, timeout = 10) {
   if (test_quota == "OVER_QUERY_LIMIT") {
     message("Aucun géocodage : quota de 2500 requêtes par jour dépassé")
     geocoder <- left_join(geocoder_init,
-                          impexp::rdata_import("data/geocodage_google.RData"),
+                          impexp::r_import("data/geocodage_google.RData"),
                           by = c("adresse_nettoyee" = "adresse"))
     return(geocoder)
   }
@@ -161,7 +161,7 @@ geocoder_adresse_google <- function(adresse, timeout = 10) {
 
   geocodage_google <- dplyr::filter(geocoder, !nchar(erreur) != 0) %>%
     dplyr::select(-erreur, -statut) %>%
-    dplyr::bind_rows(impexp::rdata_import("data/geocodage_google.RData")) %>%
+    dplyr::bind_rows(impexp::r_import("data/geocodage_google.RData")) %>%
     dplyr::arrange(adresse)
 
   message("Sauvegarde package \"geographie\": ", nrow(geocodage_google), " adresses au total")
