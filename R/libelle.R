@@ -255,7 +255,9 @@ lib_departement <- function(code_departement) {
   }
 
   lib_departement <- dplyr::tibble(code_departement) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_departement, lib_departement) %>% unique(),
+    dplyr::left_join(dplyr::select(geographie::ods_geo, code_departement, lib_departement) %>%
+                       dplyr::mutate(code_departement = stringr::str_pad(code_departement, 3, "left", "0")) %>%
+                       unique(),
                      by = "code_departement") %>%
     dplyr::pull(lib_departement)
 
