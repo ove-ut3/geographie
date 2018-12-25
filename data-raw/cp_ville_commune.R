@@ -8,4 +8,4 @@ cp_ville_commune <- dplyr::select(geographie::ptt, code_postal, lib_commune1 = n
   dplyr::filter(!is.na(code_postal) & !is.na(lib_commune)) %>%
   unique()
 
-devtools::use_data(cp_ville_commune, overwrite = TRUE)
+usethis::use_data(cp_ville_commune, overwrite = TRUE)
