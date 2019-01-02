@@ -17,6 +17,6 @@ Imports:
     stringr,
     tidyr
 Remotes:
-    stephLH/caractr
-    stephLH/impexp
+    stephLH/caractr,
+    stephLH/impexp,
     stephLH/webr
