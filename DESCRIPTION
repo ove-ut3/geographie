@@ -9,13 +9,14 @@ Depends:
 License: Etalab
 Encoding: UTF-8
 LazyData: true
-Imports:
-	caractr,
-	dplyr,
-  impexp,
-  pbapply,
-  purrr,
-  stringr,
-	tidyr,
-	webr
 RoxygenNote: 6.1.1
+Imports:
+    dplyr,
+    pbapply,
+    purrr,
+    stringr,
+    tidyr
+Remotes:
+    stephLH/caractr
+    stephLH/impexp
+    stephLH/webr
