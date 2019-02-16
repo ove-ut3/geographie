@@ -36,7 +36,7 @@ conv_cp_commune <- function(code_postal, bureau_distributeur = FALSE) {
   conv_cp_commune <- ptt %>%
     dplyr::select(code_postal, code_commune) %>%
     dplyr::group_by(code_postal) %>%
-    dplyr::filter(n() == 1) %>%
+    dplyr::filter(dplyr::n() == 1) %>%
     dplyr::ungroup() %>%
     dplyr::left_join(dplyr::tibble(code_postal), ., by = "code_postal") %>%
     dplyr::pull(code_commune)
@@ -163,7 +163,7 @@ conv_code_postal <- function(code_postal) {
 
   conv_code_postal <- dplyr::select(geographie::ptt, code_postal, code_commune) %>%
     dplyr::group_by(code_postal) %>%
-    dplyr::filter(n() == 1) %>%
+    dplyr::filter(dplyr::n() == 1) %>%
     dplyr::ungroup() %>%
     dplyr::left_join(dplyr::tibble(code_postal), ., by = "code_postal") %>%
     dplyr::mutate(code_postal = conv_commune_cp(code_commune)) %>%
