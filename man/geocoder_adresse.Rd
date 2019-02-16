@@ -5,7 +5,7 @@
 \title{Obtenir le resultat des API (adresse.data.gouv.fr et google) a partir de l'adresse complete}
 \usage{
 geocoder_adresse(adresse, service, nettoyer_adresse = TRUE,
-  timeout = 10)
+  timeout = 10, progress_bar = FALSE)
 }
 \arguments{
 \item{adresse}{Un vecteur d'adresses.}
@@ -15,6 +15,8 @@ geocoder_adresse(adresse, service, nettoyer_adresse = TRUE,
 \item{nettoyer_adresse}{\code{TRUE}, l'adresse est nettoyée (minuscule, sans accent et ponctuation); \code{FALSE}, aucune opération n'est réalisée.}
 
 \item{timeout}{Temps de réponse maximal en secondes.}
+
+\item{progress_bar}{Barre de progression (package pbapply)}
 }
 \value{
 Un data_frame avec une ligne par adresse soumise.\cr

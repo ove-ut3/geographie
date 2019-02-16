@@ -13,11 +13,12 @@ RoxygenNote: 6.1.1
 Imports:
     caractr,
     dplyr,
-    impexp,
-    pbapply,
     purrr,
     stringr,
-    tidyr,
+    tidyr
+Suggests:
+    impexp,
+    pbapply,
     webr
 Remotes:
     stephLH/caractr,

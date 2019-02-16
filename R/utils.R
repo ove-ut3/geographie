@@ -35,17 +35,23 @@ localiser_adresse <- function(adresse, regex_adresse) {
   return(localisation)
 }
 
-geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
+geocoder_adresse_data_gouv <- function(adresse, timeout = 10, progress_bar = FALSE) {
 
   geocoder <- dplyr::tibble(adresse) %>%
     dplyr::mutate(appel_api = stringr::str_replace_all(adresse, " ", "+") %>%
                     paste0("http://api-adresse.data.gouv.fr/search/?limit=1&q=", .)
     )
 
-  geocodage <- pbapply::pblapply(geocoder$appel_api %>% unique(),
-                                 purrr::safely(webr::download_url),
-                                 timeout = timeout,
-                                 api_format = "json")
+  if (progress_bar == TRUE) {
+    fn_apply <- pbapply::pblapply
+  } else {
+    fn_apply <- lapply
+  }
+
+  geocodage <- fn_apply(geocoder$appel_api %>% unique(),
+                        purrr::safely(webr::download_url),
+                        timeout = timeout,
+                        api_format = "json")
 
   geocoder <- dplyr::tibble(appel_api = geocoder$appel_api %>% unique(),
                             resultat = purrr::map(geocodage, "result"),
@@ -111,7 +117,7 @@ geocoder_adresse_data_gouv <- function(adresse, timeout = 10) {
   return(geocoder)
 }
 
-geocoder_adresse_google <- function(adresse, timeout = 10) {
+geocoder_adresse_google <- function(adresse, timeout = 10, progress_bar = FALSE) {
 
   geocoder <- dplyr::tibble(adresse) %>%
     dplyr::mutate(appel_api = stringr::str_replace_all(adresse, " ", "+") %>%
@@ -130,10 +136,16 @@ geocoder_adresse_google <- function(adresse, timeout = 10) {
     return(geocoder)
   }
 
-  geocodage <- pbapply::pblapply(geocoder$appel_api %>% unique(),
-                                 purrr::safely(webr::download_url),
-                                 timeout = timeout,
-                                 api_format = "json")
+  if (progress_bar == TRUE) {
+    fn_apply <- pbapply::pblapply
+  } else {
+    fn_apply <- lapply
+  }
+
+  geocodage <- fn_apply(geocoder$appel_api %>% unique(),
+                        purrr::safely(webr::download_url),
+                        timeout = timeout,
+                        api_format = "json")
 
   geocoder <- dplyr::tibble(appel_api = geocoder$appel_api %>% unique(),
                             resultat = purrr::map(geocodage, "result"),

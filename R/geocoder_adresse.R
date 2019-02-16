@@ -6,6 +6,7 @@
 #' @param service L'API à utiliser: \code{adresse.data.gouv.fr} ou \code{googlemaps}.
 #' @param nettoyer_adresse \code{TRUE}, l'adresse est nettoyée (minuscule, sans accent et ponctuation); \code{FALSE}, aucune opération n'est réalisée.
 #' @param timeout Temps de réponse maximal en secondes.
+#' @param progress_bar Barre de progression (package pbapply)
 #'
 #' @return Un data_frame avec une ligne par adresse soumise.\cr
 #'
@@ -50,7 +51,7 @@
 #'   service = "googlemaps")
 
 #' @export
-geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout = 10) {
+geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout = 10, progress_bar = FALSE) {
 
   if (!service %in% c("adresse.data.gouv.fr", "googlemaps")) {
     stop("Le service doit être \"adresse.data.gouv.fr\" ou \"googlemaps\"", call. = FALSE)
@@ -90,10 +91,10 @@ geocoder_adresse <- function(adresse, service, nettoyer_adresse = TRUE, timeout 
   message("Géocodage de ", length(geocoder$adresse_nettoyee %>% unique()), " adresses distinctes.")
 
   if (service == "adresse.data.gouv.fr") {
-    geocoder <- geocoder_adresse_data_gouv(adresse = geocoder$adresse_nettoyee %>% unique(), timeout = timeout)
+    geocoder <- geocoder_adresse_data_gouv(adresse = geocoder$adresse_nettoyee %>% unique(), timeout = timeout, progress_bar = progress_bar)
 
   } else if (service == "googlemaps") {
-    geocoder <- geocoder_adresse_google(adresse = geocoder$adresse_nettoyee %>% unique(), timeout = timeout)
+    geocoder <- geocoder_adresse_google(adresse = geocoder$adresse_nettoyee %>% unique(), timeout = timeout, progress_bar = progress_bar)
 
   }
 
