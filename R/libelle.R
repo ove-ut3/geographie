@@ -29,7 +29,7 @@ lib_commune <- function(code_commune) {
 
   test_longueur <- purrr::map_int(code_commune, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_commune <- dplyr::tibble(code_commune) %>%
@@ -70,7 +70,7 @@ lib_uu <- function(code_uu) {
 
   test_longueur <- purrr::map_int(code_uu, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code d'unité urbaine n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code d'unité urbaine n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_uu <- dplyr::select(geographie::ods_geo, code_uu, lib_uu) %>%
@@ -119,7 +119,7 @@ lib_pays <- function(code_pays, langue = "fr") {
 
   test_longueur <- purrr::map_int(code_pays, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   if (langue == "fr") champ_lib_pays <- "lib_pays_fr"
@@ -170,7 +170,7 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
 
   test_longueur <- purrr::map_int(code_pays_eu, nchar) %in% c(2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code pays n'est pas de longueur 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code pays n'est pas de longueur 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   if (langue == "fr") champ_lib_pays <- "lib_pays_fr"
@@ -251,7 +251,7 @@ lib_departement <- function(code_departement) {
 
   test_longueur <- purrr::map_int(code_departement, nchar) %in% c(2, 3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code département n'est pas de longueur 2 ou 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code département n'est pas de longueur 2 ou 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_departement <- dplyr::tibble(code_departement) %>%
@@ -295,7 +295,7 @@ lib_region <- function(code_region) {
 
   test_longueur <- purrr::map_int(code_region, nchar) %in% c(1, 2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code région n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code région n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_region <- dplyr::tibble(code_region) %>%
@@ -336,7 +336,7 @@ lib_region_2015 <- function(code_region_2015) {
 
   test_longueur <- purrr::map_int(code_region_2015, nchar) %in% c(1, 2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code région  (2015 et avant) n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code région  (2015 et avant) n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_region_2015 <- dplyr::tibble(code_region_2015) %>%
@@ -378,7 +378,7 @@ lib_nationalite <- function(code_pays) {
 
   test_longueur <- purrr::map_int(code_pays, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_nationalite <- dplyr::select(geographie::pays, code_pays, lib_nationalite) %>%

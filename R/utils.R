@@ -129,7 +129,7 @@ geocoder_adresse_google <- function(adresse, timeout = 10, progress_bar = FALSE)
     dplyr::pull(status)
 
   if (test_quota == "OVER_QUERY_LIMIT") {
-    message("Aucun géocodage : quota de 2500 requêtes par jour dépassé")
+    warning("Aucun géocodage : quota de 2500 requêtes par jour dépassé")
     geocoder <- left_join(geocoder_init,
                           impexp::r_import("data/geocodage_google.RData"),
                           by = c("adresse_nettoyee" = "adresse"))

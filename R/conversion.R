@@ -24,7 +24,7 @@ conv_cp_commune <- function(code_postal, bureau_distributeur = FALSE) {
 
   test_longueur <- purrr::map_int(code_postal, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   ptt <- geographie::ptt
@@ -77,7 +77,7 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
 
   test_longueur <- purrr::map_int(code_postal, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_commune <- caractr::str_remove_punct(lib_commune) %>%
@@ -120,7 +120,7 @@ conv_commune_cp <- function(code_commune) {
 
   test_longueur <- purrr::map_int(code_commune, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code commune n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   conv_commune_cp <- dplyr::select(geographie::ptt, code_commune, particularite_commune, code_postal) %>%
@@ -158,7 +158,7 @@ conv_code_postal <- function(code_postal) {
 
   test_longueur <- purrr::map_int(code_postal, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   conv_code_postal <- dplyr::select(geographie::ptt, code_postal, code_commune) %>%
@@ -199,7 +199,7 @@ conv_pays_eu_insee <- function(code_pays_eu) {
 
   test_longueur <- purrr::map_int(code_pays_eu, nchar) %in% c(2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    message("Au moins un code pays n'est pas de longueur 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code pays n'est pas de longueur 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   conv_pays_eu_insee <- dplyr::tibble(code_pays_eu) %>%
