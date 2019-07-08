@@ -245,5 +245,11 @@ conv_lib_code_pays <- function(lib_pays) {
                      by = "lib_pays") %>%
     dplyr::pull(code_pays)
 
+  test <- !is.na(lib_pays) & is.na(conv_lib_code_pays)
+
+  if (any(test, na.rm = TRUE) == TRUE) {
+    warning("Au moins un libellé pays n'a pas pu être converti: positions [", paste(which(test), collapse = ", "), "]")
+  }
+
   return(conv_lib_code_pays)
 }
