@@ -245,7 +245,8 @@ conv_lib_code_pays <- function(lib_pays) {
                      by = "lib_pays") %>%
     dplyr::pull(code_pays)
 
-  test <- !is.na(lib_pays) & is.na(conv_lib_code_pays)
+  # Eviter de considérer un code pays déjà présent dans lib_pays comme non-recodé
+  test <- !is.na(lib_pays) & !stringr::str_detect(lib_pays, "^\\d{3}$") & is.na(conv_lib_code_pays)
 
   if (any(test, na.rm = TRUE) == TRUE) {
     warning("Au moins un libellé pays n'a pas pu être converti: positions [", paste(which(test), collapse = ", "), "]")
