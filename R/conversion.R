@@ -80,8 +80,9 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
     warning("Au moins un code postal n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_commune <- caractr::str_remove_punct(lib_commune) %>%
-    caractr::str_remove_accent() %>%
+  lib_commune <- lib_commune %>%
+    stringr::str_remove_all("[[:punct:]]+") %>%
+    stringi::stri_trans_general("latin-ascii") %>%
     toupper()
 
   conv_cp_ville_commune <- dplyr::left_join(dplyr::tibble(code_postal, lib_commune),
@@ -229,16 +230,16 @@ conv_lib_code_pays <- function(lib_pays) {
 
   conv_lib_code_pays <- dplyr::tibble(lib_pays = lib_pays) %>%
     dplyr::mutate(lib_pays = tolower(lib_pays) %>%
-                    caractr::str_remove_accent() %>%
-                    caractr::str_remove_punct() %>%
+                    stringi::stri_trans_general("latin-ascii") %>%
+                    stringr::str_remove_all("[[:punct:]]+") %>%
                     stringr::str_replace_all("\\s+", " ")) %>%
     dplyr::left_join(tidyr::drop_na(geographie::pays, code_pays) %>%
                        dplyr::select(code_pays, lib_pays_fr, lib_pays_en) %>%
                        tidyr::gather("champ", "libelle_pays", -code_pays, na.rm = TRUE) %>%
                        dplyr::bind_rows(geographie::pays_libelle) %>%
                        dplyr::mutate(libelle_pays = tolower(libelle_pays) %>%
-                                       caractr::str_remove_accent() %>%
-                                       caractr::str_remove_punct() %>%
+                                       stringi::stri_trans_general("latin-ascii") %>%
+                                       stringr::str_remove_all("[[:punct:]]+") %>%
                                        stringr::str_replace_all("\\s+", " ")) %>%
                        dplyr::select(lib_pays = libelle_pays, code_pays) %>%
                        unique(),
