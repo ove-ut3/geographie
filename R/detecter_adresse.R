@@ -26,15 +26,15 @@ decouper_adresse_lignes <- function(adresse) {
   adresse_lignes <- dplyr::bind_cols(adresse_lignes, extraire_bp_cs(adresse_lignes$adresse)) %>%
     dplyr::select(cle, adresse = sans_bp_cs, bp_cs)
 
-  regex_adresse <- dplyr::filter(geographie::adresse_voie_prx, !(lib_voie %in% c("b[aâ]t(iment)?", "mail", "moulin")))
+  regex_adresse <- dplyr::filter(geographie::adresse_voie_prx, !(lib_voie %in% c("b[a\u00E2]t(iment)?", "mail", "moulin")))
 
-  regex_adresse_1 <- dplyr::filter(regex_adresse, !lib_voie %in% c("campus", "cit[eé]", "dom(aine)?", "parc", "parvis", "plateau", "plt", "villa")) %>%
+  regex_adresse_1 <- dplyr::filter(regex_adresse, !lib_voie %in% c("campus", "cit[e\u00E9]", "dom(aine)?", "parc", "parvis", "plateau", "plt", "villa")) %>%
     dplyr::pull(lib_voie) %>%
     paste(collapse = "|") %>%
     paste0("\\b((\\d+ )?(\\d+ ?(a|b(is)?|c|ter|d|e)?( +)?)?(", ., "))\\b .+") %>%
     stringr::regex(ignore_case = TRUE)
 
-  regex_adresse_2 <- dplyr::filter(regex_adresse, lib_voie %in% c("campus", "cit[eé]", "dom(aine)?", "parc", "parvis", "plateau", "plt", "villa")) %>%
+  regex_adresse_2 <- dplyr::filter(regex_adresse, lib_voie %in% c("campus", "cit[e\u00E9]", "dom(aine)?", "parc", "parvis", "plateau", "plt", "villa")) %>%
     dplyr::pull(lib_voie) %>%
     paste(collapse = "|") %>%
     paste0("\\b(", ., ")\\b .+") %>%
