@@ -81,7 +81,7 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
   }
 
   lib_commune <- lib_commune %>%
-    stringr::str_remove_all("[[:punct:]]+") %>%
+    stringr::str_remove_all("[[:punct:]]+", " ") %>%
     stringi::stri_trans_general("latin-ascii") %>%
     toupper()
 
@@ -231,7 +231,7 @@ conv_lib_code_pays <- function(lib_pays) {
   conv_lib_code_pays <- dplyr::tibble(lib_pays = lib_pays) %>%
     dplyr::mutate(lib_pays = tolower(lib_pays) %>%
                     stringi::stri_trans_general("latin-ascii") %>%
-                    stringr::str_remove_all("[[:punct:]]+") %>%
+                    stringr::str_replace_all("[[:punct:]]+", " ") %>%
                     stringr::str_replace_all("\\s+", " ")) %>%
     dplyr::left_join(tidyr::drop_na(geographie::pays, code_pays) %>%
                        dplyr::select(code_pays, lib_pays_fr, lib_pays_en) %>%
@@ -239,7 +239,7 @@ conv_lib_code_pays <- function(lib_pays) {
                        dplyr::bind_rows(geographie::pays_libelle) %>%
                        dplyr::mutate(libelle_pays = tolower(libelle_pays) %>%
                                        stringi::stri_trans_general("latin-ascii") %>%
-                                       stringr::str_remove_all("[[:punct:]]+") %>%
+                                       stringr::str_replace_all("[[:punct:]]+", " ") %>%
                                        stringr::str_replace_all("\\s+", " ")) %>%
                        dplyr::select(lib_pays = libelle_pays, code_pays) %>%
                        unique(),

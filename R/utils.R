@@ -28,7 +28,7 @@ localiser_adresse <- function(adresse, regex_adresse) {
   }
 
   localisation <- adresse %>%
-    stringr::str_remove_all("[[:punct:]]+") %>%
+    stringr::str_remove_all("[[:punct:]]+", " ") %>%
     stringr::str_locate_all(regex_adresse) %>%
     purrr::map( ~ .[, 1]) %>%
     purrr::map_dbl( ~ ifelse(length(.) == 0, NA, tail(., 1)))
