@@ -235,8 +235,8 @@ lib_type_voie <- function(code_type_voie) {
 #' geographie::lib_departement(c("01", "33"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_departement = c("01", "33")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_departement(code_departement))
+#' data <- dplyr::tibble(code_departement = c("01", "33"))
+#' data <- dplyr::mutate(data, libelle = geographie::lib_departement(code_departement))
 #'
 #' @export
 lib_departement <- function(code_departement) {
