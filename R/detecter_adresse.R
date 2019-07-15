@@ -40,22 +40,22 @@ decouper_adresse_lignes <- function(adresse) {
     paste0("\\b(", ., ")\\b .+") %>%
     stringr::regex(ignore_case = TRUE)
 
-  adresse_lignes <- dplyr::mutate(adresse_lignes,
+  adresse_lignes <- adresse_lignes %>%
+    dplyr::mutate(
+      position_debut = localiser_adresse(adresse, regex_adresse_1),
+      adresse_ligne_1 = ifelse(position_debut >= 2, substring(adresse, 1, position_debut - 1), NA_character_),
+      adresse_detectee_1 = ifelse(!is.na(position_debut), substring(adresse, position_debut), NA_character_),
+      adresse_ligne_1 = ifelse(is.na(position_debut), adresse, adresse_ligne_1),
 
-                           position_debut = localiser_adresse(adresse, regex_adresse_1),
-                           adresse_ligne_1 = ifelse(position_debut >= 2, substring(adresse, 1, position_debut - 1), NA_character_),
-                           adresse_detectee_1 = ifelse(!is.na(position_debut), substring(adresse, position_debut), NA_character_),
-                           adresse_ligne_1 = ifelse(is.na(position_debut), adresse, adresse_ligne_1),
+      position_debut = localiser_adresse(adresse_ligne_1, regex_adresse_2),
+      adresse_detectee_2 = ifelse(!is.na(position_debut), substring(adresse_ligne_1, position_debut), NA_character_),
+      adresse_ligne_2 = ifelse(position_debut >= 2, substring(adresse_ligne_1, 1, position_debut - 1), NA_character_),
 
-                           position_debut = localiser_adresse(adresse_ligne_1, regex_adresse_2),
-                           adresse_detectee_2 = ifelse(!is.na(position_debut), substring(adresse_ligne_1, position_debut), NA_character_),
-                           adresse_ligne_2 = ifelse(position_debut >= 2, substring(adresse_ligne_1, 1, position_debut - 1), NA_character_),
+      adresse_ligne_1 = ifelse(!is.na(adresse_ligne_2), adresse_ligne_2, adresse_ligne_1),
+      adresse_ligne_1 = dplyr::if_else(position_debut == 1, NA_character_, adresse_ligne_1, adresse_ligne_1),
 
-                           adresse_ligne_1 = ifelse(!is.na(adresse_ligne_2), adresse_ligne_2, adresse_ligne_1),
-                           adresse_ligne_1 = dplyr::if_else(position_debut == 1, NA_character_, adresse_ligne_1, adresse_ligne_1),
-
-                           adresse_lignes = caractr::str_paste(adresse_ligne_1, adresse_detectee_2, adresse_detectee_1, bp_cs, sep = "\n")
-                           ) %>%
+      adresse_lignes = caractr::str_paste(adresse_ligne_1, adresse_detectee_2, adresse_detectee_1, bp_cs, sep = "\n")
+    ) %>%
     dplyr::group_by(cle) %>%
     dplyr::summarise(adresse_lignes = caractr::str_paste(adresse_lignes, collapse = "\n")) %>%
     dplyr::ungroup() %>%
