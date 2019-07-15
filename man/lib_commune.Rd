@@ -21,8 +21,8 @@ Obtenir le libellé de commune à partir d'un code commune.
 \examples{
 geographie::lib_commune(c("01001", "33003"))
 
-# CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::tibble(code_commune = c("01001", "33003")) \%>\%
-  dplyr::mutate(libelle = geographie::lib_commune(code_commune))
+# Création d'un champ dans un data frame avec la fonction "mutate"
+data <- dplyr::tibble(code_commune = c("01001", "33003"))
+dplyr::mutate(data, libelle = geographie::lib_commune(code_commune))
 
 }

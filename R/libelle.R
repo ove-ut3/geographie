@@ -13,8 +13,8 @@
 #' geographie::lib_commune(c("01001", "33003"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_commune = c("01001", "33003")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_commune(code_commune))
+#' data <- dplyr::tibble(code_commune = c("01001", "33003"))
+#' dplyr::mutate(data, libelle = geographie::lib_commune(code_commune))
 #'
 #' @export
 lib_commune <- function(code_commune) {
