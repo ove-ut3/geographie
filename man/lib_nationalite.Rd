@@ -13,7 +13,6 @@ lib_nationalite(code_pays)
 Un vecteur de libellé de nationalité.
 
 Jeu de données source : \code{geographie::pays}.\cr
-Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 }
 \description{
 Obtenir le libellé de nationalité à partir d'un code pays (code INSEE).

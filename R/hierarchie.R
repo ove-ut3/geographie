@@ -7,7 +7,6 @@
 #' @return Un vecteur de code d'unité urbaine.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' # Un exemple avec deux communes, l'une dans une unité urbaine, l'autre non
@@ -45,7 +44,6 @@ hier_commune_uu <- function(code_commune) {
 #' @return Un vecteur de code de département.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::hier_commune_departement(c("01001", "33003"))
@@ -82,7 +80,6 @@ hier_commune_departement <- function(code_commune) {
 #' @return Un vecteur de code de région.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::hier_commune_region(c("01001", "33003"))
@@ -119,7 +116,6 @@ hier_commune_region <- function(code_commune) {
 #' @return Un vecteur de code de région (2015 et avant).
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::hier_commune_region_2015(c("01001", "33003"))
@@ -156,7 +152,6 @@ hier_commune_region_2015 <- function(code_commune) {
 #' @return Un vecteur de code de région.
 #'
 #' Jeu de données source : \code{geographie::departement}.\cr
-#' Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::hier_departement_region(c("003", "056"))
@@ -193,7 +188,6 @@ hier_departement_region <- function(code_departement) {
 #' @return Un vecteur de code de région (2015 et avant).
 #'
 #' Jeu de données source : \code{geographie::departement}.\cr
-#' Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::hier_departement_region_2015(c("003", "056"))

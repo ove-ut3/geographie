@@ -13,7 +13,6 @@ conv_code_postal(code_postal)
 Un vecteur de codes postaux correspondant à un code commune.
 
 Jeu de données source : \code{geographie::ptt}.\cr
-Il est créé à partir de la table "N_PTT" de la BCE.
 }
 \description{
 Obtenir le code postal correspondant à une commune (à partir d'un code postal plus fin).

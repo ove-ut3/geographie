@@ -7,7 +7,6 @@
 #' @return Un vecteur de libellé de commune.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_commune(c("01001", "33003"))
@@ -48,7 +47,6 @@ lib_commune <- function(code_commune) {
 #' @return Un vecteur de libellé d'unité urbaine.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_uu(c("01302", "33701"))
@@ -92,7 +90,6 @@ lib_uu <- function(code_uu) {
 #' @return Un vecteur de libellé de pays.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_pays(c("100", "109"))
@@ -143,7 +140,6 @@ lib_pays <- function(code_pays, langue = "fr") {
 #' @return Un vecteur de libellé de pays.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_pays_eu(c("FR", "DE"))
@@ -193,7 +189,6 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
 #' @return Un vecteur de libellé de type de voie.
 #'
 #' Jeu de données source : \code{geographie::type_voie}.\cr
-#' Il est créé à partir de la table "Adresse_voie_type" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_type_voie(c("AV", "BD", "QUA"))
@@ -229,7 +224,6 @@ lib_type_voie <- function(code_type_voie) {
 #' @return Un vecteur de libellé de département.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_departement(c("01", "33"))
@@ -273,7 +267,6 @@ lib_departement <- function(code_departement) {
 #' @return Un vecteur de libellé de région.
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_region(c("84", "75"))
@@ -314,7 +307,6 @@ lib_region <- function(code_region) {
 #' @return Un vecteur de libellé de région (2015 et avant).
 #'
 #' Jeu de données source : \code{geographie::ods_geo}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_region_2015(c("82", "72"))
@@ -356,7 +348,6 @@ lib_region_2015 <- function(code_region_2015) {
 #' @return Un vecteur de libellé de nationalité.
 #'
 #' Jeu de données source : \code{geographie::pays}.\cr
-#' Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::lib_nationalite(c("100", "109"))

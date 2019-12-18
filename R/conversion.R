@@ -9,7 +9,6 @@
 #' Seuls les codes communes non-doublonnés sont retournés.
 #'
 #' Jeu de données source : \code{geographie::ptt}.\cr
-#' Il est créé à partir de la table "N_PTT" de la BCE.
 #'
 #' @examples
 #' # Deux exemples de codes postaux : le premier n'est lié qu'à un seul code commune mais pas le second
@@ -54,7 +53,6 @@ conv_cp_commune <- function(code_postal, bureau_distributeur = FALSE) {
 #' @return Un vecteur de code commune.
 #'
 #' Jeu de données source : \code{geographie::cp_ville_commune}.\cr
-#' Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 #'
 #' @examples
 #' geographie::conv_cp_ville_commune(code_postal = c("17000", "34010"),
@@ -103,7 +101,6 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
 #' Seuls les codes postaux non-doublonnés sont retournés.
 #'
 #' Jeu de données source : \code{geographie::ptt}.\cr
-#' Il est créé à partir de la table "N_PTT" de la BCE.
 #'
 #' @examples
 #' geographie::conv_commune_cp(c("18110", "38061"))
@@ -145,7 +142,6 @@ conv_commune_cp <- function(code_commune) {
 #' @return Un vecteur de codes postaux correspondant à un code commune.
 #'
 #' Jeu de données source : \code{geographie::ptt}.\cr
-#' Il est créé à partir de la table "N_PTT" de la BCE.
 #'
 #' @examples
 #' geographie::conv_code_postal(c("75015", "75115"))
@@ -180,7 +176,6 @@ conv_code_postal <- function(code_postal) {
 #' @param code_pays_eu Un vecteur de code pays EU.
 #'
 #' Jeu de données source : \code{geographie::pays}.\cr
-#' Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 #'
 #' @return Un vecteur de code pays INSEE.
 #'

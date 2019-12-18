@@ -13,7 +13,6 @@ lib_uu(code_uu)
 Un vecteur de libellé d'unité urbaine.
 
 Jeu de données source : \code{geographie::ods_geo}.\cr
-Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
 Obtenir le libellé d'unité urbaine à partir d'un code d'unité urbaine.

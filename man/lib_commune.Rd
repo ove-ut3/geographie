@@ -13,7 +13,6 @@ lib_commune(code_commune)
 Un vecteur de libellé de commune.
 
 Jeu de données source : \code{geographie::ods_geo}.\cr
-Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
 Obtenir le libellé de commune à partir d'un code commune.

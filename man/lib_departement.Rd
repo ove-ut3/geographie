@@ -13,7 +13,6 @@ lib_departement(code_departement)
 Un vecteur de libellé de département.
 
 Jeu de données source : \code{geographie::ods_geo}.\cr
-Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
 Obtenir le libellé de département à partir du code département.

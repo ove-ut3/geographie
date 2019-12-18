@@ -13,7 +13,6 @@ hier_departement_region(code_departement)
 Un vecteur de code de région.
 
 Jeu de données source : \code{geographie::departement}.\cr
-Il est créé à partir de la table "Departement" de la base Access Tables_ref (voir projet "Géographie").
 }
 \description{
 Obtenir le code région à partir d'un code département.

@@ -13,7 +13,6 @@ lib_region(code_region)
 Un vecteur de libellé de région.
 
 Jeu de données source : \code{geographie::ods_geo}.\cr
-Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
 Obtenir le libellé de région à partir du code région.

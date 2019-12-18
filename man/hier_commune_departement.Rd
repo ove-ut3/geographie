@@ -13,7 +13,6 @@ hier_commune_departement(code_commune)
 Un vecteur de code de département.
 
 Jeu de données source : \code{geographie::ods_geo}.\cr
-Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
 Obtenir le code département à partir d'un code commune.

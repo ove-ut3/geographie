@@ -15,7 +15,6 @@ lib_pays_eu(code_pays_eu, langue = "fr")
 Un vecteur de libellé de pays.
 
 Jeu de données source : \code{geographie::ods_geo}.\cr
-Il est créé à partir de la table "Pays" de la base Access "Tables_ref.accdb" (voir projet "Géographie").
 }
 \description{
 Obtenir le libellé de pays à partir d'un code pays (code INSEE).

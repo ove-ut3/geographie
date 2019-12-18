@@ -15,7 +15,6 @@ conv_cp_ville_commune(code_postal, lib_commune)
 Un vecteur de code commune.
 
 Jeu de données source : \code{geographie::cp_ville_commune}.\cr
-Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
 Obtenir le code commune à partir d'un code postal et d'un libellé de commune.

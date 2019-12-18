@@ -13,7 +13,6 @@ hier_commune_uu(code_commune)
 Un vecteur de code d'unité urbaine.
 
 Jeu de données source : \code{geographie::ods_geo}.\cr
-Il est créé à partir du jeu de données ODS Référentiel géographique français (voir projet "Géographie").
 }
 \description{
 Renvoie le code d'unité urbaine à partir du code commune.

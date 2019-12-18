@@ -16,7 +16,6 @@ Un vecteur de code commune.\cr
 Seuls les codes communes non-doublonnés sont retournés.
 
 Jeu de données source : \code{geographie::ptt}.\cr
-Il est créé à partir de la table "N_PTT" de la BCE.
 }
 \description{
 Obtenir le code commune à partir d'un code postal.
