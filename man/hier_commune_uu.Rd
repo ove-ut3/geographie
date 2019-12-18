@@ -18,7 +18,7 @@ Jeu de données source : \code{geographie::ods_geo}.\cr
 Renvoie le code d'unité urbaine à partir du code commune.
 }
 \examples{
-# Un exemple avec deux communes, l'une dans une unité urbaine, l'autre non
+# Un exemple avec deux communes, l'une dans une unitÃ© urbaine, l'autre non
 geographie::hier_commune_uu(c("01001", "33003"))
 
 }
