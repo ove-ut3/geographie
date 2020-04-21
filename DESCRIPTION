@@ -11,17 +11,10 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
 Imports:
-    caractr,
     dplyr,
     purrr,
     stringi,
     stringr,
     tidyr
 Suggests:
-    impexp,
-    pbapply,
-    webr
-Remotes:
-    stephLH/caractr,
-    stephLH/impexp,
-    stephLH/webr
+    pbapply
