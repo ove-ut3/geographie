@@ -16,5 +16,3 @@ Imports:
     stringi,
     stringr,
     tidyr
-Suggests:
-    pbapply
