@@ -79,7 +79,7 @@ conv_cp_ville_commune <- function(code_postal, lib_commune) {
   }
 
   lib_commune <- lib_commune %>%
-    stringr::str_remove_all("[[:punct:]]+", " ") %>%
+    stringr::str_remove_all("[[:punct:]]+") %>%
     stringi::stri_trans_general("latin-ascii") %>%
     toupper()
 
