@@ -21,7 +21,7 @@ Obtenir le libellé de région à partir du code région.
 geographie::lib_region(c("84", "75"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::tibble(code_region = c("84", "75")) \%>\%
-  dplyr::mutate(libelle = geographie::lib_region(code_region))
+data <- dplyr::tibble(code_region = c("84", "75"))
+dplyr::mutate(data, libelle = geographie::lib_region(code_region))
 
 }

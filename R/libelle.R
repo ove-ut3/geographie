@@ -52,8 +52,8 @@ lib_commune <- function(code_commune) {
 #' geographie::lib_uu(c("01302", "33701"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_uu = c("01302", "33701")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_uu(code_uu))
+#' data <- dplyr::tibble(code_uu = c("01302", "33701"))
+#' dplyr::mutate(data, libelle = geographie::lib_uu(code_uu))
 #'
 #' @export
 lib_uu <- function(code_uu) {
@@ -95,9 +95,9 @@ lib_uu <- function(code_uu) {
 #' geographie::lib_pays(c("100", "109"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_pays = c("100", "109")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_pays(code_pays),
-#'                 libelle_en = geographie::lib_pays(code_pays, langue = "en"))
+#' data <- dplyr::tibble(code_pays = c("100", "109"))
+#' dplyr::mutate(data, libelle = geographie::lib_pays(code_pays),
+#'                     libelle_en = geographie::lib_pays(code_pays, langue = "en"))
 #'
 #' @export
 lib_pays <- function(code_pays, langue = "fr") {
@@ -145,9 +145,9 @@ lib_pays <- function(code_pays, langue = "fr") {
 #' geographie::lib_pays_eu(c("FR", "DE"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_pays = c("FR", "DE")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_pays_eu(code_pays),
-#'                 libelle_en = geographie::lib_pays_eu(code_pays, langue = "en"))
+#' data <- dplyr::tibble(code_pays = c("FR", "DE"))
+#' dplyr::mutate(data, libelle = geographie::lib_pays_eu(code_pays),
+#'                     libelle_en = geographie::lib_pays_eu(code_pays, langue = "en"))
 #'
 #' @export
 lib_pays_eu <- function(code_pays_eu, langue = "fr") {
@@ -194,8 +194,8 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
 #' geographie::lib_type_voie(c("AV", "BD", "QUA"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_type_voie = c("AV", "BD", "QUA")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_type_voie(code_type_voie))
+#' data <- dplyr::tibble(code_type_voie = c("AV", "BD", "QUA"))
+#' dplyr::mutate(data, libelle = geographie::lib_type_voie(code_type_voie))
 #'
 #' @export
 lib_type_voie <- function(code_type_voie) {
@@ -230,7 +230,7 @@ lib_type_voie <- function(code_type_voie) {
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
 #' data <- dplyr::tibble(code_departement = c("01", "33"))
-#' data <- dplyr::mutate(data, libelle = geographie::lib_departement(code_departement))
+#' dplyr::mutate(data, libelle = geographie::lib_departement(code_departement))
 #'
 #' @export
 lib_departement <- function(code_departement) {
@@ -272,8 +272,8 @@ lib_departement <- function(code_departement) {
 #' geographie::lib_region(c("84", "75"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_region = c("84", "75")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_region(code_region))
+#' data <- dplyr::tibble(code_region = c("84", "75"))
+#' dplyr::mutate(data, libelle = geographie::lib_region(code_region))
 #'
 #' @export
 lib_region <- function(code_region) {
@@ -312,8 +312,8 @@ lib_region <- function(code_region) {
 #' geographie::lib_region_2015(c("82", "72"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_region_2015 = c("82", "72")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_region_2015(code_region_2015))
+#' data <- dplyr::tibble(code_region_2015 = c("82", "72"))
+#' dplyr::mutate(data, libelle = geographie::lib_region_2015(code_region_2015))
 #'
 #' @export
 lib_region_2015 <- function(code_region_2015) {
@@ -353,8 +353,8 @@ lib_region_2015 <- function(code_region_2015) {
 #' geographie::lib_nationalite(c("100", "109"))
 #'
 #' # Création d'un champ dans un data frame avec la fonction "mutate"
-#' dplyr::tibble(code_pays = c("100", "109")) %>%
-#'   dplyr::mutate(libelle = geographie::lib_nationalite(code_pays))
+#' data <- dplyr::tibble(code_pays = c("100", "109"))
+#' dplyr::mutate(data, libelle = geographie::lib_nationalite(code_pays))
 #'
 #' @export
 lib_nationalite <- function(code_pays) {
