@@ -13,6 +13,7 @@ RoxygenNote: 7.1.0
 Imports:
     dplyr,
     purrr,
+    rlang,
     stringi,
     stringr,
     tidyr
