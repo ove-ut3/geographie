@@ -7,9 +7,9 @@
 lib_pays_eu(code_pays_eu, langue = "fr")
 }
 \arguments{
-\item{langue}{Un code langue (\code{fr} ou \code{en}).}
+\item{code_pays_eu}{Un vecteur de code pays (code INSEE).}
 
-\item{code_pays}{Un vecteur de code pays (code INSEE).}
+\item{langue}{Un code langue (\code{fr} ou \code{en}).}
 }
 \value{
 Un vecteur de libellé de pays.

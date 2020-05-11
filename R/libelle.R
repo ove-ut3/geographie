@@ -19,7 +19,7 @@
 lib_commune <- function(code_commune) {
 
   if (class(code_commune) != "character") {
-    stop("Le code commune doit être de type character", call. = FALSE)
+    stop("Le code commune doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
@@ -32,8 +32,12 @@ lib_commune <- function(code_commune) {
   }
 
   lib_commune <- dplyr::tibble(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, lib_commune), by = "code_commune") %>%
-    dplyr::pull(lib_commune)
+    dplyr::left_join(
+      geographie::ods_geo %>%
+        dplyr::select(.data$code_commune, .data$lib_commune),
+      by = "code_commune"
+    ) %>%
+    dplyr::pull(.data$lib_commune)
 
   return(lib_commune)
 }
@@ -59,7 +63,7 @@ lib_commune <- function(code_commune) {
 lib_uu <- function(code_uu) {
 
   if (class(code_uu) != "character") {
-    stop("Le code d'unité urbaine doit être de type character", call. = FALSE)
+    stop("Le code d'unit\u00e9 urbaine doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_uu)) %>% length() == 0) {
@@ -68,14 +72,19 @@ lib_uu <- function(code_uu) {
 
   test_longueur <- purrr::map_int(code_uu, nchar) %in% c(5, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    warning("Au moins un code d'unité urbaine n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code d'unit\u00e9 urbaine n'est pas de longueur 5: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_uu <- dplyr::select(geographie::ods_geo, code_uu, lib_uu) %>%
-    tidyr::drop_na(code_uu) %>%
+  lib_uu <- geographie::ods_geo %>%
+    dplyr::select(.data$code_uu, .data$lib_uu) %>%
+    tidyr::drop_na(.data$code_uu) %>%
     unique() %>%
-    dplyr::left_join(dplyr::tibble(code_uu), ., by = "code_uu") %>%
-    dplyr::pull(lib_uu)
+    dplyr::left_join(
+      dplyr::tibble(code_uu),
+      .,
+      by = "code_uu"
+    ) %>%
+    dplyr::pull(.data$lib_uu)
 
   return(lib_uu)
 }
@@ -103,7 +112,7 @@ lib_uu <- function(code_uu) {
 lib_pays <- function(code_pays, langue = "fr") {
 
   if (class(code_pays) != "character") {
-    stop("Le code pays doit être de type character", call. = FALSE)
+    stop("Le code pays doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_pays)) %>% length() == 0) {
@@ -111,7 +120,7 @@ lib_pays <- function(code_pays, langue = "fr") {
   }
 
   if (!langue %in% c("fr", "en")) {
-    stop("La langue du libellé doit être \"fr\" ou \"en\"", call. = FALSE)
+    stop("La langue du libell\u00e9 doit \u00eatre \"fr\" ou \"en\"", call. = FALSE)
   }
 
   test_longueur <- purrr::map_int(code_pays, nchar) %in% c(3, NA_integer_)
@@ -122,10 +131,15 @@ lib_pays <- function(code_pays, langue = "fr") {
   if (langue == "fr") champ_lib_pays <- "lib_pays_fr"
   else if (langue == "en") champ_lib_pays <- "lib_pays_en"
 
-  lib_pays <- dplyr::select(geographie::pays, code_pays, lib_pays_fr, lib_pays_en) %>%
-    tidyr::drop_na(code_pays) %>%
-    dplyr::left_join(dplyr::tibble(code_pays), ., by = "code_pays") %>%
-    .[[champ_lib_pays]]
+  lib_pays <- geographie::pays %>%
+    dplyr::select(.data$code_pays, .data$lib_pays_fr, .data$lib_pays_en) %>%
+    tidyr::drop_na(.data$code_pays) %>%
+    dplyr::left_join(
+      dplyr::tibble(code_pays),
+      .,
+      by = "code_pays"
+    ) %>%
+    dplyr::pull(!!champ_lib_pays)
 
   return(lib_pays)
 }
@@ -134,7 +148,7 @@ lib_pays <- function(code_pays, langue = "fr") {
 #'
 #' Obtenir le libellé de pays à partir d'un code pays (code INSEE).
 #'
-#' @param code_pays Un vecteur de code pays (code INSEE).
+#' @param code_pays_eu Un vecteur de code pays (code INSEE).
 #' @param langue Un code langue (\code{fr} ou \code{en}).
 #'
 #' @return Un vecteur de libellé de pays.
@@ -153,7 +167,7 @@ lib_pays <- function(code_pays, langue = "fr") {
 lib_pays_eu <- function(code_pays_eu, langue = "fr") {
 
   if (class(code_pays_eu) != "character") {
-    stop("Le code pays doit être de type character", call. = FALSE)
+    stop("Le code pays doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_pays_eu)) %>% length() == 0) {
@@ -161,7 +175,7 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
   }
 
   if (!langue %in% c("fr", "en")) {
-    stop("La langue du libellé doit être \"fr\" ou \"en\"", call. = FALSE)
+    stop("La langue du libell\u00e9 doit \u00eatre \"fr\" ou \"en\"", call. = FALSE)
   }
 
   test_longueur <- purrr::map_int(code_pays_eu, nchar) %in% c(2, NA_integer_)
@@ -172,10 +186,15 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
   if (langue == "fr") champ_lib_pays <- "lib_pays_fr"
   else if (langue == "en") champ_lib_pays <- "lib_pays_en"
 
-  lib_pays_eu <- dplyr::select(geographie::pays, code_pays_eu = code_pays_iso2, lib_pays_fr, lib_pays_en) %>%
-    tidyr::drop_na(code_pays_eu) %>%
-    dplyr::left_join(dplyr::tibble(code_pays_eu), ., by = "code_pays_eu") %>%
-    .[[champ_lib_pays]]
+  lib_pays_eu <- geographie::pays %>%
+    dplyr::select(code_pays_eu = .data$code_pays_iso2, .data$lib_pays_fr, .data$lib_pays_en) %>%
+    tidyr::drop_na(.data$code_pays_eu) %>%
+    dplyr::left_join(
+      dplyr::tibble(code_pays_eu),
+      .,
+      by = "code_pays_eu"
+    ) %>%
+    dplyr::pull(!!champ_lib_pays)
 
   return(lib_pays_eu)
 }
@@ -201,7 +220,7 @@ lib_pays_eu <- function(code_pays_eu, langue = "fr") {
 lib_type_voie <- function(code_type_voie) {
 
   if (class(code_type_voie) != "character") {
-    stop("Le code de type de voie doit être de type character", call. = FALSE)
+    stop("Le code de type de voie doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_type_voie)) %>% length() == 0) {
@@ -209,8 +228,12 @@ lib_type_voie <- function(code_type_voie) {
   }
 
   lib_type_voie <- dplyr::tibble(code_type_voie) %>%
-    dplyr::left_join(dplyr::select(geographie::type_voie, code_type_voie, lib_type_voie), by = "code_type_voie") %>%
-    dplyr::pull(lib_type_voie)
+    dplyr::left_join(
+      geographie::type_voie %>%
+        dplyr::select(.data$code_type_voie, .data$lib_type_voie),
+      by = "code_type_voie"
+    ) %>%
+    dplyr::pull(.data$lib_type_voie)
 
   return(lib_type_voie)
 }
@@ -236,7 +259,7 @@ lib_type_voie <- function(code_type_voie) {
 lib_departement <- function(code_departement) {
 
   if (class(code_departement) != "character") {
-    stop("Le code département doit être de type character", call. = FALSE)
+    stop("Le code d\u00e9partement doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_departement)) %>% length() == 0) {
@@ -245,15 +268,18 @@ lib_departement <- function(code_departement) {
 
   test_longueur <- purrr::map_int(code_departement, nchar) %in% c(2, 3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    warning("Au moins un code département n'est pas de longueur 2 ou 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code d\u00e9partement n'est pas de longueur 2 ou 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_departement <- dplyr::tibble(code_departement) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_departement, lib_departement) %>%
-                       dplyr::mutate(code_departement = stringr::str_pad(code_departement, 3, "left", "0")) %>%
-                       unique(),
-                     by = "code_departement") %>%
-    dplyr::pull(lib_departement)
+    dplyr::left_join(
+      geographie::ods_geo %>%
+        dplyr::select(.data$code_departement, .data$lib_departement) %>%
+        dplyr::mutate_at("code_departement", stringr::str_pad, 3, "left", "0") %>%
+        unique(),
+      by = "code_departement"
+    ) %>%
+    dplyr::pull(.data$lib_departement)
 
   return(lib_departement)
 }
@@ -279,7 +305,7 @@ lib_departement <- function(code_departement) {
 lib_region <- function(code_region) {
 
   if (class(code_region) != "character") {
-    stop("Le code région doit être de type character", call. = FALSE)
+    stop("Le code r\u00e9gion doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_region)) %>% length() == 0) {
@@ -288,12 +314,15 @@ lib_region <- function(code_region) {
 
   test_longueur <- purrr::map_int(code_region, nchar) %in% c(1, 2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    warning("Au moins un code région n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code r\u00e9gion n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_region <- dplyr::tibble(code_region) %>%
-    dplyr::left_join(geographie::region, by = "code_region") %>%
-    dplyr::pull(lib_region)
+    dplyr::left_join(
+      geographie::region,
+      by = "code_region"
+    ) %>%
+    dplyr::pull(.data$lib_region)
 
   return(lib_region)
 }
@@ -319,7 +348,7 @@ lib_region <- function(code_region) {
 lib_region_2015 <- function(code_region_2015) {
 
   if (class(code_region_2015) != "character") {
-    stop("Le code région doit être de type character", call. = FALSE)
+    stop("Le code r\u00e9gion doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_region_2015)) %>% length() == 0) {
@@ -328,13 +357,17 @@ lib_region_2015 <- function(code_region_2015) {
 
   test_longueur <- purrr::map_int(code_region_2015, nchar) %in% c(1, 2, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    warning("Au moins un code région  (2015 et avant) n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code r\u00e9gion  (2015 et avant) n'est pas de longueur 1 ou 2: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   lib_region_2015 <- dplyr::tibble(code_region_2015) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_region_2015, lib_region_2015) %>% unique(),
-                     by = "code_region_2015") %>%
-    dplyr::pull(lib_region_2015)
+    dplyr::left_join(
+      geographie::ods_geo %>%
+        dplyr::select(.data$code_region_2015, .data$lib_region_2015) %>%
+        unique(),
+      by = "code_region_2015"
+    ) %>%
+    dplyr::pull(.data$lib_region_2015)
 
   return(lib_region_2015)
 }
@@ -360,7 +393,7 @@ lib_region_2015 <- function(code_region_2015) {
 lib_nationalite <- function(code_pays) {
 
   if (class(code_pays) != "character") {
-    stop("Le code pays doit être de type character", call. = FALSE)
+    stop("Le code pays doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_pays)) %>% length() == 0) {
@@ -372,10 +405,15 @@ lib_nationalite <- function(code_pays) {
     warning("Au moins un code pays n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
-  lib_nationalite <- dplyr::select(geographie::pays, code_pays, lib_nationalite) %>%
-    tidyr::drop_na(code_pays) %>%
-    dplyr::left_join(dplyr::tibble(code_pays), ., by = "code_pays") %>%
-    dplyr::pull(lib_nationalite)
+  lib_nationalite <- geographie::pays %>%
+    dplyr::select(.data$code_pays, .data$lib_nationalite) %>%
+    tidyr::drop_na(.data$code_pays) %>%
+    dplyr::left_join(
+      dplyr::tibble(code_pays),
+      .,
+      by = "code_pays"
+    ) %>%
+    dplyr::pull(.data$lib_nationalite)
 
   return(lib_nationalite)
 }
