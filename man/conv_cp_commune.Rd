@@ -21,7 +21,8 @@ Jeu de données source : \code{geographie::ptt}.\cr
 Obtenir le code commune à partir d'un code postal.
 }
 \examples{
-# Deux exemples de codes postaux : le premier n'est liÃ© qu'Ã  un seul code commune mais pas le second
+# Deux exemples de codes postaux : le premier n'est liÃ© qu'Ã  un seul code commune
+# mais pas le second
 geographie::conv_cp_commune(c("01001", "01000"))
 
 }

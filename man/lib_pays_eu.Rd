@@ -7,9 +7,9 @@
 lib_pays_eu(code_pays_eu, langue = "fr")
 }
 \arguments{
-\item{langue}{Un code langue (\code{fr} ou \code{en}).}
+\item{code_pays_eu}{Un vecteur de code pays (code INSEE).}
 
-\item{code_pays}{Un vecteur de code pays (code INSEE).}
+\item{langue}{Un code langue (\code{fr} ou \code{en}).}
 }
 \value{
 Un vecteur de libellé de pays.
@@ -23,8 +23,8 @@ Obtenir le libellé de pays à partir d'un code pays (code INSEE).
 geographie::lib_pays_eu(c("FR", "DE"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::tibble(code_pays = c("FR", "DE")) \%>\%
-  dplyr::mutate(libelle = geographie::lib_pays_eu(code_pays),
-                libelle_en = geographie::lib_pays_eu(code_pays, langue = "en"))
+data <- dplyr::tibble(code_pays = c("FR", "DE"))
+dplyr::mutate(data, libelle = geographie::lib_pays_eu(code_pays),
+                    libelle_en = geographie::lib_pays_eu(code_pays, langue = "en"))
 
 }

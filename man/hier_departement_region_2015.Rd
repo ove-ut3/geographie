@@ -7,7 +7,7 @@
 hier_departement_region_2015(code_departement)
 }
 \arguments{
-\item{code_commune}{Un vecteur de code département.}
+\item{code_departement}{Un vecteur de code département.}
 }
 \value{
 Un vecteur de code de région (2015 et avant).

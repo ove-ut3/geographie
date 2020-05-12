@@ -21,7 +21,7 @@ Obtenir le libellé d'unité urbaine à partir d'un code d'unité urbaine.
 geographie::lib_uu(c("01302", "33701"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::tibble(code_uu = c("01302", "33701")) \%>\%
-  dplyr::mutate(libelle = geographie::lib_uu(code_uu))
+data <- dplyr::tibble(code_uu = c("01302", "33701"))
+dplyr::mutate(data, libelle = geographie::lib_uu(code_uu))
 
 }

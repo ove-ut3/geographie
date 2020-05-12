@@ -21,7 +21,7 @@ Obtenir le libellé de nationalité à partir d'un code pays (code INSEE).
 geographie::lib_nationalite(c("100", "109"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::tibble(code_pays = c("100", "109")) \%>\%
-  dplyr::mutate(libelle = geographie::lib_nationalite(code_pays))
+data <- dplyr::tibble(code_pays = c("100", "109"))
+dplyr::mutate(data, libelle = geographie::lib_nationalite(code_pays))
 
 }

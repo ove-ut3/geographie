@@ -16,7 +16,7 @@
 hier_commune_uu <- function(code_commune) {
 
   if (class(code_commune) != "character") {
-    stop("Le code commune doit être de type character", call. = FALSE)
+    stop("Le code commune doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
@@ -29,8 +29,12 @@ hier_commune_uu <- function(code_commune) {
   }
 
   hier_commune_uu <- dplyr::tibble(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_uu), by = "code_commune") %>%
-    dplyr::pull(code_uu)
+    dplyr::left_join(
+      geographie::ods_geo %>%
+        dplyr::select(.data$code_commune, .data$code_uu),
+      by = "code_commune"
+    ) %>%
+    dplyr::pull(.data$code_uu)
 
   return(hier_commune_uu)
 }
@@ -52,7 +56,7 @@ hier_commune_uu <- function(code_commune) {
 hier_commune_departement <- function(code_commune) {
 
   if (class(code_commune) != "character") {
-    stop("Le code commune doit être de type character", call. = FALSE)
+    stop("Le code commune doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
@@ -65,8 +69,12 @@ hier_commune_departement <- function(code_commune) {
   }
 
   conv_commune_departement <- dplyr::tibble(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_departement), by = "code_commune") %>%
-    dplyr::pull(code_departement)
+    dplyr::left_join(
+      geographie::ods_geo %>%
+        dplyr::select(.data$code_commune, .data$code_departement),
+      by = "code_commune"
+    ) %>%
+    dplyr::pull(.data$code_departement)
 
   return(conv_commune_departement)
 }
@@ -88,7 +96,7 @@ hier_commune_departement <- function(code_commune) {
 hier_commune_region <- function(code_commune) {
 
   if (class(code_commune) != "character") {
-    stop("Le code commune doit être de type character", call. = FALSE)
+    stop("Le code commune doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
@@ -101,8 +109,12 @@ hier_commune_region <- function(code_commune) {
   }
 
   conv_commune_region <- dplyr::tibble(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region), by = "code_commune") %>%
-    dplyr::pull(code_region)
+    dplyr::left_join(
+      geographie::ods_geo %>%
+        dplyr::select(.data$code_commune, .data$code_region),
+      by = "code_commune"
+    ) %>%
+    dplyr::pull(.data$code_region)
 
   return(conv_commune_region)
 }
@@ -124,7 +136,7 @@ hier_commune_region <- function(code_commune) {
 hier_commune_region_2015 <- function(code_commune) {
 
   if (class(code_commune) != "character") {
-    stop("Le code commune doit être de type character", call. = FALSE)
+    stop("Le code commune doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_commune)) %>% length() == 0) {
@@ -137,8 +149,12 @@ hier_commune_region_2015 <- function(code_commune) {
   }
 
   conv_commune_region_2015 <- dplyr::tibble(code_commune) %>%
-    dplyr::left_join(dplyr::select(geographie::ods_geo, code_commune, code_region_2015), by = "code_commune") %>%
-    dplyr::pull(code_region_2015)
+    dplyr::left_join(
+      geographie::ods_geo %>%
+        dplyr::select(.data$code_commune, .data$code_region_2015),
+      by = "code_commune"
+    ) %>%
+    dplyr::pull(.data$code_region_2015)
 
   return(conv_commune_region_2015)
 }
@@ -147,7 +163,7 @@ hier_commune_region_2015 <- function(code_commune) {
 #'
 #' Obtenir le code région à partir d'un code département.
 #'
-#' @param code_commune Un vecteur de code département.
+#' @param code_departement Un vecteur de code département.
 #'
 #' @return Un vecteur de code de région.
 #'
@@ -160,7 +176,7 @@ hier_commune_region_2015 <- function(code_commune) {
 hier_departement_region <- function(code_departement) {
 
   if (class(code_departement) != "character") {
-    stop("Le code département doit être de type character", call. = FALSE)
+    stop("Le code d\u00e9partement doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_departement)) %>% length() == 0) {
@@ -169,12 +185,16 @@ hier_departement_region <- function(code_departement) {
 
   test_longueur <- purrr::map_int(code_departement, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    warning("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code d\u00e9partement n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   hier_departement_region <- dplyr::tibble(code_departement) %>%
-    dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region), by = "code_departement") %>%
-    dplyr::pull(code_region)
+    dplyr::left_join(
+      geographie::departement %>%
+        dplyr::select(.data$code_departement, .data$code_region),
+      by = "code_departement"
+    ) %>%
+    dplyr::pull(.data$code_region)
 
   return(hier_departement_region)
 }
@@ -183,7 +203,7 @@ hier_departement_region <- function(code_departement) {
 #'
 #' Obtenir le code région (2015 et avant) à partir d'un code département.
 #'
-#' @param code_commune Un vecteur de code département.
+#' @param code_departement Un vecteur de code département.
 #'
 #' @return Un vecteur de code de région (2015 et avant).
 #'
@@ -196,7 +216,7 @@ hier_departement_region <- function(code_departement) {
 hier_departement_region_2015 <- function(code_departement) {
 
   if (class(code_departement) != "character") {
-    stop("Le code département doit être de type character", call. = FALSE)
+    stop("Le code d\u00e9partement doit \u00eatre de type character", call. = FALSE)
   }
 
   if (which(!is.na(code_departement)) %>% length() == 0) {
@@ -205,12 +225,16 @@ hier_departement_region_2015 <- function(code_departement) {
 
   test_longueur <- purrr::map_int(code_departement, nchar) %in% c(3, NA_integer_)
   if (all(test_longueur, na.rm = TRUE) == FALSE) {
-    warning("Au moins un code département n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
+    warning("Au moins un code d\u00e9partement n'est pas de longueur 3: positions [", paste(which(!test_longueur), collapse = ", "), "]")
   }
 
   hier_departement_region_2015 <- dplyr::tibble(code_departement) %>%
-    dplyr::left_join(dplyr::select(geographie::departement, code_departement, code_region_2015), by = "code_departement") %>%
-    dplyr::pull(code_region_2015)
+    dplyr::left_join(
+      geographie::departement %>%
+        dplyr::select(.data$code_departement, .data$code_region_2015),
+      by = "code_departement"
+    ) %>%
+    dplyr::pull(.data$code_region_2015)
 
   return(hier_departement_region_2015)
 }

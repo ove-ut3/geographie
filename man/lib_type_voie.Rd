@@ -21,7 +21,7 @@ Obtenir le libellé de type de voie à partir du code.
 geographie::lib_type_voie(c("AV", "BD", "QUA"))
 
 # CrÃ©ation d'un champ dans un data frame avec la fonction "mutate"
-dplyr::tibble(code_type_voie = c("AV", "BD", "QUA")) \%>\%
-  dplyr::mutate(libelle = geographie::lib_type_voie(code_type_voie))
+data <- dplyr::tibble(code_type_voie = c("AV", "BD", "QUA"))
+dplyr::mutate(data, libelle = geographie::lib_type_voie(code_type_voie))
 
 }

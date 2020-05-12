@@ -1,0 +1,7 @@
+source("data-raw/scripts/adresse_voie_prx.R")
+source("data-raw/scripts/cp_ville_commune.R")
+source("data-raw/scripts/departement.R")
+source("data-raw/scripts/pays.R")
+source("data-raw/scripts/ptt.R")
+source("data-raw/scripts/region.R")
+source("data-raw/scripts/type_voie.R")
